@@ -1,18 +1,22 @@
 /*
-* Copyright (c) 2019, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright (c) 2020, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ *
+ * WSO2 Inc. licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ *
+ */
+
 
 package org.wso2.carbon.identity.api.user.biometric.device.handler.v1.model;
 
@@ -20,15 +24,33 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import javax.validation.Valid;
-/**
- **/
+
 public class RegistrationRequestDTO  {
   
+    private String id;
     private String name;
     private String model;
     private String pushId;
-    private Object publickey;
+    private String publickey;
     private String signature;
+
+    /**
+    **/
+    public RegistrationRequestDTO id(String id) {
+
+        this.id = id;
+        return this;
+    }
+    
+    @ApiModelProperty(example = "sfdesfefsgesgesgeesg3524dges", value = "")
+    @JsonProperty("id")
+    @Valid
+    public String getId() {
+        return id;
+    }
+    public void setId(String id) {
+        this.id = id;
+    }
 
     /**
     **/
@@ -86,7 +108,8 @@ public class RegistrationRequestDTO  {
 
     /**
     **/
-    public RegistrationRequestDTO publickey(Object publickey) {
+    public RegistrationRequestDTO publickey(String publickey) {
+
 
         this.publickey = publickey;
         return this;
@@ -95,10 +118,10 @@ public class RegistrationRequestDTO  {
     @ApiModelProperty(example = "bhkbvhbhjbh756576gfhvbe", value = "")
     @JsonProperty("publickey")
     @Valid
-    public Object getPublickey() {
+    public String getPublickey() {
         return publickey;
     }
-    public void setPublickey(Object publickey) {
+    public void setPublickey(String publickey) {
         this.publickey = publickey;
     }
 
@@ -132,7 +155,9 @@ public class RegistrationRequestDTO  {
             return false;
         }
         RegistrationRequestDTO registrationRequestDTO = (RegistrationRequestDTO) o;
-        return Objects.equals(this.name, registrationRequestDTO.name) &&
+
+        return Objects.equals(this.id, registrationRequestDTO.id) &&
+            Objects.equals(this.name, registrationRequestDTO.name) &&
             Objects.equals(this.model, registrationRequestDTO.model) &&
             Objects.equals(this.pushId, registrationRequestDTO.pushId) &&
             Objects.equals(this.publickey, registrationRequestDTO.publickey) &&
@@ -141,7 +166,9 @@ public class RegistrationRequestDTO  {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, model, pushId, publickey, signature);
+
+        return Objects.hash(id, name, model, pushId, publickey, signature);
+
     }
 
     @Override
@@ -149,7 +176,7 @@ public class RegistrationRequestDTO  {
 
         StringBuilder sb = new StringBuilder();
         sb.append("class RegistrationRequestDTO {\n");
-        
+        sb.append("    id: ").append(toIndentedString(id)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    model: ").append(toIndentedString(model)).append("\n");
         sb.append("    pushId: ").append(toIndentedString(pushId)).append("\n");

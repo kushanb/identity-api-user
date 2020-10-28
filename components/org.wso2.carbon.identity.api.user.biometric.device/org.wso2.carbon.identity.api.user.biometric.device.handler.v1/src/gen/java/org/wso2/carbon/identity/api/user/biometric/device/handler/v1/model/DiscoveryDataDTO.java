@@ -1,40 +1,64 @@
 /*
-* Copyright (c) 2019, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright (c) 2020, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ *
+ * WSO2 Inc. licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ *
+ */
+
 
 package org.wso2.carbon.identity.api.user.biometric.device.handler.v1.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.annotations.ApiModelProperty;
+import java.util.UUID;
+
 
 import java.util.Objects;
-import java.util.UUID;
 import javax.validation.Valid;
 
 /**
  * .
  **/
 public class DiscoveryDataDTO  {
-  
+
+    private String id;
     private String username;
     private String tennantDomain;
     private String userStoreDomain;
     private String registrationUrl;
     private String authenticationUrl;
     private UUID challenge;
+
+    /**
+    **/
+    public DiscoveryDataDTO id(String id) {
+
+        this.id = id;
+        return this;
+    }
+    
+    @ApiModelProperty(example = "dsfdsfdsfdsasdwadwadswad", value = "")
+    @JsonProperty("id")
+    @Valid
+    public String getId() {
+        return id;
+    }
+    public void setId(String id) {
+        this.id = id;
+    }
 
     /**
     **/
@@ -156,7 +180,8 @@ public class DiscoveryDataDTO  {
             return false;
         }
         DiscoveryDataDTO discoveryDataDTO = (DiscoveryDataDTO) o;
-        return Objects.equals(this.username, discoveryDataDTO.username) &&
+        return Objects.equals(this.id, discoveryDataDTO.id) &&
+            Objects.equals(this.username, discoveryDataDTO.username) &&
             Objects.equals(this.tennantDomain, discoveryDataDTO.tennantDomain) &&
             Objects.equals(this.userStoreDomain, discoveryDataDTO.userStoreDomain) &&
             Objects.equals(this.registrationUrl, discoveryDataDTO.registrationUrl) &&
@@ -166,7 +191,7 @@ public class DiscoveryDataDTO  {
 
     @Override
     public int hashCode() {
-        return Objects.hash(username, tennantDomain, userStoreDomain, registrationUrl, authenticationUrl, challenge);
+        return Objects.hash(id, username, tennantDomain, userStoreDomain, registrationUrl, authenticationUrl, challenge);
     }
 
     @Override
@@ -174,7 +199,7 @@ public class DiscoveryDataDTO  {
 
         StringBuilder sb = new StringBuilder();
         sb.append("class DiscoveryDataDTO {\n");
-        
+        sb.append("    id: ").append(toIndentedString(id)).append("\n");
         sb.append("    username: ").append(toIndentedString(username)).append("\n");
         sb.append("    tennantDomain: ").append(toIndentedString(tennantDomain)).append("\n");
         sb.append("    userStoreDomain: ").append(toIndentedString(userStoreDomain)).append("\n");
