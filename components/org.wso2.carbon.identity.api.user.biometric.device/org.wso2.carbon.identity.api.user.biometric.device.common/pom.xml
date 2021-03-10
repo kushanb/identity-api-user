@@ -45,5 +45,37 @@
             <artifactId>org.wso2.carbon.identity.application.authenticator.biometric.device.handler</artifactId>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.jaxrs</groupId>
+            <artifactId>jackson-jaxrs-json-provider</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon.identity.user.api</groupId>
+            <artifactId>org.wso2.carbon.identity.api.user.common</artifactId>
+            <scope>provided</scope>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>javax.mail-api</artifactId>
+            <version>1.6.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.user.api</artifactId>
+            <version>${carbon.kernel.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon.identity.framework</groupId>
+            <artifactId>org.wso2.carbon.identity.base</artifactId>
+        </dependency>
     </dependencies>
+
 </project>
