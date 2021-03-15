@@ -295,7 +295,7 @@ paths:
         200:
           description: All availabe devices of the user.
           content:
-            array:
+            application/json:
               schema:
                 $ref: '#/components/schemas/AllDevices'
         400:
@@ -467,7 +467,7 @@ paths:
         200:
           description: All registered devices of the user.
           content:
-            array:
+            application/json:
               schema:
                 $ref: '#/components/schemas/AllDevices'
         400:
@@ -510,6 +510,9 @@ components:
     DiscoveryDataDTO:
       type: object
       properties:
+        id:
+          type: string
+          example: "fgsjhd-sjhfgj-334hdfg"
         username:
           type: string
           example: "admin"
@@ -576,6 +579,9 @@ components:
     RegistrationRequestDTO:
       type: object
       properties:
+        id:
+          type: string
+          example: "fgsjhd-sjhfgj-334hdfg"
         name:
           type: string
           example: "My Device"
