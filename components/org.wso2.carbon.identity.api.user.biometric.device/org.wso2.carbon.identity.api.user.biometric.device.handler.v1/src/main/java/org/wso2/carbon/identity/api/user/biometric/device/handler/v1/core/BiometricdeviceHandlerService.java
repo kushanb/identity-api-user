@@ -218,13 +218,19 @@ public class BiometricdeviceHandlerService {
         discoveryData = deviceHandler.getDiscoveryData(user.getUserName(),
                 user.getUserStoreDomain(), user.getTenantDomain());
         DiscoveryDataDTO discoveryDataDTO = new DiscoveryDataDTO();
-        discoveryDataDTO.setId(discoveryData.getDeviceId());
-        discoveryDataDTO.setUsername(discoveryData.getUsername());
-        discoveryDataDTO.setTennantDomain(discoveryData.getTenantDomain());
-        discoveryDataDTO.setUserStoreDomain(discoveryData.getUserStore());
-        discoveryDataDTO.setChallenge(discoveryData.getChallenge());
-        discoveryDataDTO.setRegistrationUrl(discoveryData.getRegistrationUrl());
-        discoveryDataDTO.setAuthenticationUrl(discoveryData.getAuthenticationUrl());
+        discoveryDataDTO.setDid(discoveryData.getDeviceId());
+        discoveryDataDTO.setUn(discoveryData.getUsername());
+        discoveryDataDTO.setTd(discoveryData.getTenantDomain());
+//        discoveryDataDTO.setUserStoreDomain(discoveryData.getUserStore());
+        discoveryDataDTO.setFn(discoveryData.getFirstName());
+        discoveryDataDTO.setLn(discoveryData.getLastName());
+        discoveryDataDTO.setChg(discoveryData.getChallenge());
+        discoveryDataDTO.setHst(discoveryData.getHost());
+        discoveryDataDTO.setBp(discoveryData.getBasePath());
+        discoveryDataDTO.setRe(discoveryData.getRegistrationEndpoint());
+        discoveryDataDTO.setRde(discoveryData.getRemoveDeviceEndpoint());
+//        discoveryDataDTO.setRegistrationUrl(discoveryData.getRegistrationUrl());
+//        discoveryDataDTO.setAuthenticationUrl(discoveryData.getAuthenticationUrl());
         return discoveryDataDTO;
     }
     private User getAuthenticatedUser() {

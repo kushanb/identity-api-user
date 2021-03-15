@@ -31,138 +31,225 @@ import javax.xml.bind.annotation.*;
 
 public class DiscoveryDataDTO  {
   
-    private String id;
-    private String username;
-    private String tennantDomain;
-    private String userStoreDomain;
-    private String registrationUrl;
-    private String authenticationUrl;
-    private UUID challenge;
+    private String did;
+    private String un;
+    private String fn;
+    private String ln;
+    private String td;
+    private String hst;
+    private String bp;
+    private String re;
+    private String ae;
+    private String rde;
+    private UUID chg;
 
     /**
+    * Device ID
     **/
-    public DiscoveryDataDTO id(String id) {
+    public DiscoveryDataDTO did(String did) {
 
-        this.id = id;
+        this.did = did;
         return this;
     }
     
-    @ApiModelProperty(example = "fgsjhd-sjhfgj-334hdfg", value = "")
-    @JsonProperty("id")
+    @ApiModelProperty(example = "b03f90c9-6723-48f6-863b-a35f1ac77f57", value = "Device ID")
+    @JsonProperty("did")
     @Valid
-    public String getId() {
-        return id;
+    public String getDid() {
+        return did;
     }
-    public void setId(String id) {
-        this.id = id;
+    public void setDid(String did) {
+        this.did = did;
     }
 
     /**
+    * Username
     **/
-    public DiscoveryDataDTO username(String username) {
+    public DiscoveryDataDTO un(String un) {
 
-        this.username = username;
+        this.un = un;
         return this;
     }
     
-    @ApiModelProperty(example = "admin", value = "")
-    @JsonProperty("username")
+    @ApiModelProperty(example = "admin", value = "Username")
+    @JsonProperty("un")
     @Valid
-    public String getUsername() {
-        return username;
+    public String getUn() {
+        return un;
     }
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUn(String un) {
+        this.un = un;
     }
 
     /**
+    * First name
     **/
-    public DiscoveryDataDTO tennantDomain(String tennantDomain) {
+    public DiscoveryDataDTO fn(String fn) {
 
-        this.tennantDomain = tennantDomain;
+        this.fn = fn;
         return this;
     }
     
-    @ApiModelProperty(example = "mainDomain", value = "")
-    @JsonProperty("tennantDomain")
+    @ApiModelProperty(example = "John", value = "First name")
+    @JsonProperty("fn")
     @Valid
-    public String getTennantDomain() {
-        return tennantDomain;
+    public String getFn() {
+        return fn;
     }
-    public void setTennantDomain(String tennantDomain) {
-        this.tennantDomain = tennantDomain;
+    public void setFn(String fn) {
+        this.fn = fn;
     }
 
     /**
+    * Last name
     **/
-    public DiscoveryDataDTO userStoreDomain(String userStoreDomain) {
+    public DiscoveryDataDTO ln(String ln) {
 
-        this.userStoreDomain = userStoreDomain;
+        this.ln = ln;
         return this;
     }
     
-    @ApiModelProperty(example = "secondary", value = "")
-    @JsonProperty("userStoreDomain")
+    @ApiModelProperty(example = "Doe", value = "Last name")
+    @JsonProperty("ln")
     @Valid
-    public String getUserStoreDomain() {
-        return userStoreDomain;
+    public String getLn() {
+        return ln;
     }
-    public void setUserStoreDomain(String userStoreDomain) {
-        this.userStoreDomain = userStoreDomain;
+    public void setLn(String ln) {
+        this.ln = ln;
     }
 
     /**
+    * Tenant domain/Organisation
     **/
-    public DiscoveryDataDTO registrationUrl(String registrationUrl) {
+    public DiscoveryDataDTO td(String td) {
 
-        this.registrationUrl = registrationUrl;
+        this.td = td;
         return this;
     }
     
-    @ApiModelProperty(example = "localhost:9443/t/{tenant_context}/api/users/v1/me/device/", value = "")
-    @JsonProperty("registrationUrl")
+    @ApiModelProperty(example = "mainDomain", value = "Tenant domain/Organisation")
+    @JsonProperty("td")
     @Valid
-    public String getRegistrationUrl() {
-        return registrationUrl;
+    public String getTd() {
+        return td;
     }
-    public void setRegistrationUrl(String registrationUrl) {
-        this.registrationUrl = registrationUrl;
+    public void setTd(String td) {
+        this.td = td;
     }
 
     /**
+    * Base URL
     **/
-    public DiscoveryDataDTO authenticationUrl(String authenticationUrl) {
+    public DiscoveryDataDTO hst(String hst) {
 
-        this.authenticationUrl = authenticationUrl;
+        this.hst = hst;
         return this;
     }
     
-    @ApiModelProperty(example = "localhost:9443/t/{tenant_context}/api/users/v1/me/device/biometric", value = "")
-    @JsonProperty("authenticationUrl")
+    @ApiModelProperty(example = "https://localhost:9443/", value = "Base URL")
+    @JsonProperty("hst")
     @Valid
-    public String getAuthenticationUrl() {
-        return authenticationUrl;
+    public String getHst() {
+        return hst;
     }
-    public void setAuthenticationUrl(String authenticationUrl) {
-        this.authenticationUrl = authenticationUrl;
+    public void setHst(String hst) {
+        this.hst = hst;
     }
 
     /**
+    * Base path for the me endpoints
     **/
-    public DiscoveryDataDTO challenge(UUID challenge) {
+    public DiscoveryDataDTO bp(String bp) {
 
-        this.challenge = challenge;
+        this.bp = bp;
         return this;
     }
     
-    @ApiModelProperty(value = "")
-    @JsonProperty("challenge")
+    @ApiModelProperty(example = "t/{tenant_context}/api/users/v1/me", value = "Base path for the me endpoints")
+    @JsonProperty("bp")
     @Valid
-    public UUID getChallenge() {
-        return challenge;
+    public String getBp() {
+        return bp;
     }
-    public void setChallenge(UUID challenge) {
-        this.challenge = challenge;
+    public void setBp(String bp) {
+        this.bp = bp;
+    }
+
+    /**
+    * Registration endpoint
+    **/
+    public DiscoveryDataDTO re(String re) {
+
+        this.re = re;
+        return this;
+    }
+    
+    @ApiModelProperty(example = "t/{tenant_context}/api/users/v1/me/push-auth/devices", value = "Registration endpoint")
+    @JsonProperty("re")
+    @Valid
+    public String getRe() {
+        return re;
+    }
+    public void setRe(String re) {
+        this.re = re;
+    }
+
+    /**
+    * Authentication endpoint
+    **/
+    public DiscoveryDataDTO ae(String ae) {
+
+        this.ae = ae;
+        return this;
+    }
+    
+    @ApiModelProperty(example = "push-auth/authenticate", value = "Authentication endpoint")
+    @JsonProperty("ae")
+    @Valid
+    public String getAe() {
+        return ae;
+    }
+    public void setAe(String ae) {
+        this.ae = ae;
+    }
+
+    /**
+    * Remove device endpoint
+    **/
+    public DiscoveryDataDTO rde(String rde) {
+
+        this.rde = rde;
+        return this;
+    }
+    
+    @ApiModelProperty(example = "push-auth/devices/remove", value = "Remove device endpoint")
+    @JsonProperty("rde")
+    @Valid
+    public String getRde() {
+        return rde;
+    }
+    public void setRde(String rde) {
+        this.rde = rde;
+    }
+
+    /**
+    * Challenge
+    **/
+    public DiscoveryDataDTO chg(UUID chg) {
+
+        this.chg = chg;
+        return this;
+    }
+    
+    @ApiModelProperty(example = "b03f90c9-6723-48f6-863b-a35f1ac77f57", value = "Challenge")
+    @JsonProperty("chg")
+    @Valid
+    public UUID getChg() {
+        return chg;
+    }
+    public void setChg(UUID chg) {
+        this.chg = chg;
     }
 
 
@@ -177,18 +264,22 @@ public class DiscoveryDataDTO  {
             return false;
         }
         DiscoveryDataDTO discoveryDataDTO = (DiscoveryDataDTO) o;
-        return Objects.equals(this.id, discoveryDataDTO.id) &&
-            Objects.equals(this.username, discoveryDataDTO.username) &&
-            Objects.equals(this.tennantDomain, discoveryDataDTO.tennantDomain) &&
-            Objects.equals(this.userStoreDomain, discoveryDataDTO.userStoreDomain) &&
-            Objects.equals(this.registrationUrl, discoveryDataDTO.registrationUrl) &&
-            Objects.equals(this.authenticationUrl, discoveryDataDTO.authenticationUrl) &&
-            Objects.equals(this.challenge, discoveryDataDTO.challenge);
+        return Objects.equals(this.did, discoveryDataDTO.did) &&
+            Objects.equals(this.un, discoveryDataDTO.un) &&
+            Objects.equals(this.fn, discoveryDataDTO.fn) &&
+            Objects.equals(this.ln, discoveryDataDTO.ln) &&
+            Objects.equals(this.td, discoveryDataDTO.td) &&
+            Objects.equals(this.hst, discoveryDataDTO.hst) &&
+            Objects.equals(this.bp, discoveryDataDTO.bp) &&
+            Objects.equals(this.re, discoveryDataDTO.re) &&
+            Objects.equals(this.ae, discoveryDataDTO.ae) &&
+            Objects.equals(this.rde, discoveryDataDTO.rde) &&
+            Objects.equals(this.chg, discoveryDataDTO.chg);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, tennantDomain, userStoreDomain, registrationUrl, authenticationUrl, challenge);
+        return Objects.hash(did, un, fn, ln, td, hst, bp, re, ae, rde, chg);
     }
 
     @Override
@@ -197,13 +288,17 @@ public class DiscoveryDataDTO  {
         StringBuilder sb = new StringBuilder();
         sb.append("class DiscoveryDataDTO {\n");
         
-        sb.append("    id: ").append(toIndentedString(id)).append("\n");
-        sb.append("    username: ").append(toIndentedString(username)).append("\n");
-        sb.append("    tennantDomain: ").append(toIndentedString(tennantDomain)).append("\n");
-        sb.append("    userStoreDomain: ").append(toIndentedString(userStoreDomain)).append("\n");
-        sb.append("    registrationUrl: ").append(toIndentedString(registrationUrl)).append("\n");
-        sb.append("    authenticationUrl: ").append(toIndentedString(authenticationUrl)).append("\n");
-        sb.append("    challenge: ").append(toIndentedString(challenge)).append("\n");
+        sb.append("    did: ").append(toIndentedString(did)).append("\n");
+        sb.append("    un: ").append(toIndentedString(un)).append("\n");
+        sb.append("    fn: ").append(toIndentedString(fn)).append("\n");
+        sb.append("    ln: ").append(toIndentedString(ln)).append("\n");
+        sb.append("    td: ").append(toIndentedString(td)).append("\n");
+        sb.append("    hst: ").append(toIndentedString(hst)).append("\n");
+        sb.append("    bp: ").append(toIndentedString(bp)).append("\n");
+        sb.append("    re: ").append(toIndentedString(re)).append("\n");
+        sb.append("    ae: ").append(toIndentedString(ae)).append("\n");
+        sb.append("    rde: ").append(toIndentedString(rde)).append("\n");
+        sb.append("    chg: ").append(toIndentedString(chg)).append("\n");
         sb.append("}");
         return sb.toString();
     }

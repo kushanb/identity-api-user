@@ -510,29 +510,55 @@ components:
     DiscoveryDataDTO:
       type: object
       properties:
-        id:
+        did:
+          description: "Device ID"
           type: string
-          example: "fgsjhd-sjhfgj-334hdfg"
-        username:
+          example: "b03f90c9-6723-48f6-863b-a35f1ac77f57"
+        un:
+          description: "Username"
           type: string
           example: "admin"
-        tennantDomain:
+        fn:
+          description: "First name"
+          type: string
+          example: "John"
+        ln:
+          description: "Last name"
+          type: string
+          example: "Doe"
+        td:
+          description: "Tenant domain/Organisation"
           type: string
           example: "mainDomain"
-        userStoreDomain:
-          type: string
-          example: "secondary"
-        registrationUrl:
+        hst:
+          description: "Base URL"
           type: string
           format: hostname
-          example: "localhost:9443/t/{tenant_context}/api/users/v1/me/device/"
-        authenticationUrl:
+          example: "https://localhost:9443/"
+        bp:
+          description: "Base path for the me endpoints"
           type: string
-          example: "localhost:9443/t/{tenant_context}/api/users/v1/me/device/biometric"
-        challenge:
+          example: "t/{tenant_context}/api/users/v1/me"
+        re:
+          description: "Registration endpoint"
+          type: string
+          format: url
+          example: "t/{tenant_context}/api/users/v1/me/push-auth/devices"
+        ae:
+          description: "Authentication endpoint"
+          type: string
+          format: url
+          example: "push-auth/authenticate"
+        rde:
+          description: "Remove device endpoint"
+          type: string
+          format: url
+          example: "push-auth/devices/remove"
+        chg:
+          description: "Challenge"
           type: string
           format: uuid
-          example: "srsdh76798iuj"
+          example: "b03f90c9-6723-48f6-863b-a35f1ac77f57"
 
     # The List of All devices
     AllDevices:
