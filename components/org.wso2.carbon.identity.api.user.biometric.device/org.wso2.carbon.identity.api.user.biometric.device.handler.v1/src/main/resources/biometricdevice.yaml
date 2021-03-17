@@ -569,8 +569,6 @@ components:
           id: "fehiwwieuf9328"
           name: "My Device"
           model: "Iphone 8 "
-          pushId: "uq99g9NLogr-k3OC6i1UDhmfeiZeKbygGPBcKoq96UI"
-          publicKey: uq99g9NLogr-k3OC6i1UDhmfeiZeKbygGPBcKoq96UI
           registrationTime: "2019-11-26T05:16:19.932Z"
           lastUsedTime: "2019-12-26T05:16:19.932Z"
 
@@ -653,6 +651,10 @@ components:
           type: string
           description: The value to be used within the operations
           example: 'My new Device'
+        path:
+          type: string
+          description: Path for the device display name
+          example: "/display-name"
 
   securitySchemes:
     BasicAuth:

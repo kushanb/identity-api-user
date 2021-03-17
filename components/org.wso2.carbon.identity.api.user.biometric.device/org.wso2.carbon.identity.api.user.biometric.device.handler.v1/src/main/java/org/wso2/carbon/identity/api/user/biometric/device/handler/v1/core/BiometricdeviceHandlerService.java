@@ -202,7 +202,6 @@ public class BiometricdeviceHandlerService {
                 deviceDTO.setId(device.getDeviceId());
                 deviceDTO.setName(device.getDeviceName());
                 deviceDTO.setModel(device.getDeviceModel());
-                deviceDTO.setPushId(device.getPushId());
                 deviceDTO.setRegistrationTime(device.getRegistrationTime());
                 deviceDTO.setLastUsedTime(device.getLastUsedTime());
                 deviceDTOArrayList.add(deviceDTO);
@@ -221,7 +220,6 @@ public class BiometricdeviceHandlerService {
         discoveryDataDTO.setDid(discoveryData.getDeviceId());
         discoveryDataDTO.setUn(discoveryData.getUsername());
         discoveryDataDTO.setTd(discoveryData.getTenantDomain());
-//        discoveryDataDTO.setUserStoreDomain(discoveryData.getUserStore());
         discoveryDataDTO.setFn(discoveryData.getFirstName());
         discoveryDataDTO.setLn(discoveryData.getLastName());
         discoveryDataDTO.setChg(discoveryData.getChallenge());
@@ -229,8 +227,6 @@ public class BiometricdeviceHandlerService {
         discoveryDataDTO.setBp(discoveryData.getBasePath());
         discoveryDataDTO.setRe(discoveryData.getRegistrationEndpoint());
         discoveryDataDTO.setRde(discoveryData.getRemoveDeviceEndpoint());
-//        discoveryDataDTO.setRegistrationUrl(discoveryData.getRegistrationUrl());
-//        discoveryDataDTO.setAuthenticationUrl(discoveryData.getAuthenticationUrl());
         return discoveryDataDTO;
     }
     private User getAuthenticatedUser() {

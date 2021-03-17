@@ -35,6 +35,7 @@ public class PatchDTO  {
   
     private String operation;
     private String value;
+    private String path;
 
     /**
     * The operation to be performed
@@ -78,6 +79,25 @@ public class PatchDTO  {
         this.value = value;
     }
 
+    /**
+    * Path for the device display name
+    **/
+    public PatchDTO path(String path) {
+
+        this.path = path;
+        return this;
+    }
+    
+    @ApiModelProperty(example = "/display-name", value = "Path for the device display name")
+    @JsonProperty("path")
+    @Valid
+    public String getPath() {
+        return path;
+    }
+    public void setPath(String path) {
+        this.path = path;
+    }
+
 
 
     @Override
@@ -91,12 +111,13 @@ public class PatchDTO  {
         }
         PatchDTO patchDTO = (PatchDTO) o;
         return Objects.equals(this.operation, patchDTO.operation) &&
-            Objects.equals(this.value, patchDTO.value);
+            Objects.equals(this.value, patchDTO.value) &&
+            Objects.equals(this.path, patchDTO.path);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(operation, value);
+        return Objects.hash(operation, value, path);
     }
 
     @Override
@@ -107,6 +128,7 @@ public class PatchDTO  {
         
         sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
         sb.append("    value: ").append(toIndentedString(value)).append("\n");
+        sb.append("    path: ").append(toIndentedString(path)).append("\n");
         sb.append("}");
         return sb.toString();
     }

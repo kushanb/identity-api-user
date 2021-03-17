@@ -66,10 +66,14 @@ public class MeApiServiceImpl implements MeApiService {
         if (log.isDebugEnabled()) {
             log.debug(MessageFormat.format("The device name could not be modified of device : {0} ", deviceId));
         }
-        deviceHandlerService = new BiometricdeviceHandlerService();
-        deviceHandlerService.editDeviceName(deviceId, patch.getValue());
+        if(patch.getPath().equals("/display-name")) {
+            deviceHandlerService = new BiometricdeviceHandlerService();
+            deviceHandlerService.editDeviceName(deviceId, patch.getValue());
 
-        return Response.ok().build();
+            return Response.ok().build();
+        } else {
+            return Response.status(400).build();
+        }
     }
 
     @Override
