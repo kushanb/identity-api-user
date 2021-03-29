@@ -212,10 +212,9 @@ public class BiometricdeviceHandlerService {
 
     public DiscoveryDataDTO getDiscoveryData() {
         deviceHandler = new DeviceHandlerImpl();
-        User user = getAuthenticatedUser();
+//        User user = getAuthenticatedUser();
         DiscoveryData discoveryData;
-        discoveryData = deviceHandler.getDiscoveryData(user.getUserName(),
-                user.getUserStoreDomain(), user.getTenantDomain());
+        discoveryData = deviceHandler.getDiscoveryData();
         DiscoveryDataDTO discoveryDataDTO = new DiscoveryDataDTO();
         discoveryDataDTO.setDid(discoveryData.getDeviceId());
         discoveryDataDTO.setUn(discoveryData.getUsername());
