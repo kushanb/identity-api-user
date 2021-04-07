@@ -185,7 +185,7 @@ public class DiscoveryDataDTO  {
         return this;
     }
     
-    @ApiModelProperty(example = "t/{tenant_context}/api/users/v1/me/push-auth/devices", value = "Registration endpoint")
+    @ApiModelProperty(example = "/push-auth/devices", value = "Registration endpoint")
     @JsonProperty("re")
     @Valid
     public String getRe() {

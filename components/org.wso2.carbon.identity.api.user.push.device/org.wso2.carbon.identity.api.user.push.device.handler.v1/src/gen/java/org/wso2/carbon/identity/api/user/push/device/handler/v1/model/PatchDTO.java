@@ -80,7 +80,7 @@ public class PatchDTO  {
     }
 
     /**
-    * Path for the device display name
+    * Path for the operation
     **/
     public PatchDTO path(String path) {
 
@@ -88,7 +88,7 @@ public class PatchDTO  {
         return this;
     }
     
-    @ApiModelProperty(example = "/display-name", value = "Path for the device display name")
+    @ApiModelProperty(example = "/display-name", value = "Path for the operation")
     @JsonProperty("path")
     @Valid
     public String getPath() {

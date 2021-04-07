@@ -43,10 +43,10 @@ public class DefaultApi  {
 
     @Valid
     @DELETE
-    @Path("/{user-id}/biometricdevice/{deviceId}")
+    @Path("/{user-id}/push-auth/devices/{deviceId}")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Remove devices by deviceId. ", notes = "This API is used by admins to remove a specific device <b>Permission required:</b>  * /permission/admin/manage/identity/user/push_divice_mgt/delete ", response = Void.class, authorizations = {
+    @ApiOperation(value = "Remove devices by deviceId. ", notes = "This API is used by admins to remove a specific device<br/> <b>Permission required:</b>  * /permission/admin/manage/identity/user/push_divice_mgt/delete ", response = Void.class, authorizations = {
         @Authorization(value = "BasicAuth"),
         @Authorization(value = "OAuth2", scopes = {
             
@@ -60,17 +60,17 @@ public class DefaultApi  {
         @ApiResponse(code = 403, message = "Forbidden", response = ErrorDTO.class),
         @ApiResponse(code = 500, message = "Server Error", response = ErrorDTO.class)
     })
-    public Response userIdBiometricdeviceDeviceIdDelete(@ApiParam(value = "ID of user",required=true) @PathParam("user-id") String userId, @ApiParam(value = "Unique Id of device",required=true) @PathParam("deviceId") String deviceId) {
+    public Response userIdPushAuthDevicesDeviceIdDelete(@ApiParam(value = "ID of user",required=true) @PathParam("user-id") String userId, @ApiParam(value = "Unique Id of device",required=true) @PathParam("deviceId") String deviceId) {
 
-        return delegate.userIdBiometricdeviceDeviceIdDelete(userId,  deviceId );
+        return delegate.userIdPushAuthDevicesDeviceIdDelete(userId,  deviceId );
     }
 
     @Valid
     @GET
-    @Path("/{user-id}/biometricdevice/{deviceId}")
+    @Path("/{user-id}/push-auth/devices/{deviceId}")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Returns Specific Device ", notes = "This API is by admin setto retrive aspecifc device <b>Permission required:</b>  * /permission/admin/manage/identity/user/push_divice_mgt/view ", response = DeviceDTO.class, authorizations = {
+    @ApiOperation(value = "Returns Specific Device ", notes = "This API is used by admin set to retrive a specifc device<br/> <b>Permission required:</b>  * /permission/admin/manage/identity/user/push_divice_mgt/view ", response = DeviceDTO.class, authorizations = {
         @Authorization(value = "BasicAuth"),
         @Authorization(value = "OAuth2", scopes = {
             
@@ -83,17 +83,17 @@ public class DefaultApi  {
         @ApiResponse(code = 403, message = "Forbidden", response = ErrorDTO.class),
         @ApiResponse(code = 500, message = "Server Error", response = ErrorDTO.class)
     })
-    public Response userIdBiometricdeviceDeviceIdGet(@ApiParam(value = "ID of user",required=true) @PathParam("user-id") String userId, @ApiParam(value = "ID of device to return",required=true) @PathParam("deviceId") String deviceId) {
+    public Response userIdPushAuthDevicesDeviceIdGet(@ApiParam(value = "ID of user",required=true) @PathParam("user-id") String userId, @ApiParam(value = "ID of device to return",required=true) @PathParam("deviceId") String deviceId) {
 
-        return delegate.userIdBiometricdeviceDeviceIdGet(userId,  deviceId );
+        return delegate.userIdPushAuthDevicesDeviceIdGet(userId,  deviceId );
     }
 
     @Valid
     @GET
-    @Path("/{user-id}/biometricdevice/devices")
+    @Path("/{user-id}/push-auth/devices")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Returns Devices of a user ", notes = "This API is used by admins to retrieve all devices registered under a user\" <b>Permission required:</b>  * /permission/admin/manage/identity/user/push_divice_mgt/list ", response = Object.class, responseContainer = "List", authorizations = {
+    @ApiOperation(value = "Returns Devices of a user ", notes = "This API is used by admins to retrieve all devices registered under a user<br/> <b>Permission required:</b>  * /permission/admin/manage/identity/user/push_divice_mgt/list ", response = Object.class, responseContainer = "List", authorizations = {
         @Authorization(value = "BasicAuth"),
         @Authorization(value = "OAuth2", scopes = {
             
@@ -107,9 +107,9 @@ public class DefaultApi  {
         @ApiResponse(code = 404, message = "Not found", response = ErrorDTO.class),
         @ApiResponse(code = 500, message = "Server Error", response = ErrorDTO.class)
     })
-    public Response userIdBiometricdeviceDevicesGet(@ApiParam(value = "ID of user",required=true) @PathParam("user-id") String userId) {
+    public Response userIdPushAuthDevicesGet(@ApiParam(value = "ID of user",required=true) @PathParam("user-id") String userId) {
 
-        return delegate.userIdBiometricdeviceDevicesGet(userId );
+        return delegate.userIdPushAuthDevicesGet(userId );
     }
 
 }

@@ -37,9 +37,39 @@ public class DefaultApiServiceImpl implements DefaultApiService {
     @Autowired
     private PushDeviceHandlerService deviceHandlerService;
 
-    @Override
-    public Response userIdBiometricdeviceDeviceIdDelete(String userId, String deviceId) {
+//    @Override
+//    public Response userIdBiometricdeviceDeviceIdDelete(String userId, String deviceId) {
+//
+//        if (log.isDebugEnabled()) {
+//            log.debug("Removing device : {0} " + deviceId + " of User : {0} ");
+//        }
+//        deviceHandlerService = new PushDeviceHandlerService();
+//        deviceHandlerService.unregisterDevice(deviceId);
+//        return Response.noContent().build();
+//    }
+//
+//
+//    @Override
+//    public Response userIdBiometricdeviceDeviceIdGet(String userId, String deviceId) {
+//        if (log.isDebugEnabled()) {
+//            log.debug("Fetching data of device : {0}" + deviceId + " of user :{0}" + userId);
+//        }
+//        deviceHandlerService = new PushDeviceHandlerService();
+//        return Response.ok().entity(deviceHandlerService.getDevice(deviceId)).build();
+//    }
+//
+//    @Override
+//    public Response userIdBiometricdeviceDevicesGet(String userId) {
+//
+//        if (log.isDebugEnabled()) {
+//            log.debug("Retrieving all devices of user ");
+//        }
+//        deviceHandlerService = new PushDeviceHandlerService();
+//        return Response.ok().entity(deviceHandlerService.listDevices()).build();
+//    }
 
+    @Override
+    public Response userIdPushAuthDevicesDeviceIdDelete(String userId, String deviceId) {
         if (log.isDebugEnabled()) {
             log.debug("Removing device : {0} " + deviceId + " of User : {0} ");
         }
@@ -48,9 +78,8 @@ public class DefaultApiServiceImpl implements DefaultApiService {
         return Response.noContent().build();
     }
 
-
     @Override
-    public Response userIdBiometricdeviceDeviceIdGet(String userId, String deviceId) {
+    public Response userIdPushAuthDevicesDeviceIdGet(String userId, String deviceId) {
         if (log.isDebugEnabled()) {
             log.debug("Fetching data of device : {0}" + deviceId + " of user :{0}" + userId);
         }
@@ -59,8 +88,7 @@ public class DefaultApiServiceImpl implements DefaultApiService {
     }
 
     @Override
-    public Response userIdBiometricdeviceDevicesGet(String userId) {
-
+    public Response userIdPushAuthDevicesGet(String userId) {
         if (log.isDebugEnabled()) {
             log.debug("Retrieving all devices of user ");
         }

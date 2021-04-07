@@ -25,6 +25,7 @@ import java.util.List;
 import org.wso2.carbon.identity.api.user.push.device.handler.v1.model.DeviceDTO;
 import org.wso2.carbon.identity.api.user.push.device.handler.v1.model.DiscoveryDataDTO;
 import org.wso2.carbon.identity.api.user.push.device.handler.v1.model.ErrorDTO;
+import org.wso2.carbon.identity.api.user.push.device.handler.v1.model.InlineObject;
 import org.wso2.carbon.identity.api.user.push.device.handler.v1.model.InlineResponse201;
 import org.wso2.carbon.identity.api.user.push.device.handler.v1.model.PatchDTO;
 import org.wso2.carbon.identity.api.user.push.device.handler.v1.model.RegistrationRequestDTO;
@@ -33,15 +34,17 @@ import javax.ws.rs.core.Response;
 
 public interface MeApiService {
 
-      public Response meBiometricdeviceDeviceIdDelete(String deviceId);
+      public Response mePushAuthDevicesDeviceIdDelete(String deviceId);
 
-      public Response meBiometricdeviceDeviceIdGet(String deviceId);
+      public Response mePushAuthDevicesDeviceIdGet(String deviceId);
 
-      public Response meBiometricdeviceDeviceIdPatch(String deviceId, PatchDTO patchDTO);
+      public Response mePushAuthDevicesDeviceIdPatch(String deviceId, PatchDTO patchDTO);
 
-      public Response meBiometricdeviceDevicesGet();
+      public Response mePushAuthDevicesDeviceIdRemovePost(String deviceId, InlineObject inlineObject);
 
-      public Response meBiometricdeviceDiscoveryDataGet();
+      public Response mePushAuthDevicesGet();
 
-      public Response meBiometricdevicePost(RegistrationRequestDTO registrationRequestDTO);
+      public Response mePushAuthDevicesPost(RegistrationRequestDTO registrationRequestDTO);
+
+      public Response mePushAuthDiscoveryDataGet();
 }

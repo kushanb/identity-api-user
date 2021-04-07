@@ -26,6 +26,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.wso2.carbon.identity.api.user.push.device.handler.v1.MeApiService;
 import org.wso2.carbon.identity.api.user.push.device.handler.v1.core.PushDeviceHandlerService;
+import org.wso2.carbon.identity.api.user.push.device.handler.v1.model.InlineObject;
 import org.wso2.carbon.identity.api.user.push.device.handler.v1.model.PatchDTO;
 import org.wso2.carbon.identity.api.user.push.device.handler.v1.model.RegistrationRequestDTO;
 
@@ -42,8 +43,69 @@ public class MeApiServiceImpl implements MeApiService {
     @Autowired
     private PushDeviceHandlerService deviceHandlerService;
 
+//    @Override
+//    public Response meBiometricdeviceDeviceIdDelete(String deviceId) {
+//        if (log.isDebugEnabled()) {
+//            log.debug(MessageFormat.format("Removing device : {0} ", deviceId));
+//        }
+//        deviceHandlerService = new PushDeviceHandlerService();
+//        deviceHandlerService.unregisterDevice(deviceId);
+//        return Response.noContent().build();
+//    }
+//
+//    @Override
+//    public Response meBiometricdeviceDeviceIdGet(String deviceId) {
+//        if (log.isDebugEnabled()) {
+//            log.debug(MessageFormat.format("Fetching data of device : {0}", deviceId));
+//        }
+//        deviceHandlerService = new PushDeviceHandlerService();
+//        return Response.ok().entity(deviceHandlerService.getDevice(deviceId)).build();
+//    }
+//
+//    @Override
+//    public Response meBiometricdeviceDeviceIdPatch(String deviceId, PatchDTO patch) {
+//        if (log.isDebugEnabled()) {
+//            log.debug(MessageFormat.format("The device name could not be modified of device : {0} ", deviceId));
+//        }
+//        if(patch.getPath().equals("/display-name")) {
+//            deviceHandlerService = new PushDeviceHandlerService();
+//            deviceHandlerService.editDeviceName(deviceId, patch.getValue());
+//
+//            return Response.ok().build();
+//        } else {
+//            return Response.status(400).build();
+//        }
+//    }
+//
+//    @Override
+//    public Response meBiometricdeviceDevicesGet() {
+//        if (log.isDebugEnabled()) {
+//            log.debug("Retrieving all devices of user ");
+//        }
+//        deviceHandlerService = new PushDeviceHandlerService();
+//        return Response.ok().entity(deviceHandlerService.listDevices()).build();
+//    }
+//
+//    @Override
+//    public Response meBiometricdevicePost(RegistrationRequestDTO registrationRequest) {
+//        if (log.isDebugEnabled() && registrationRequest != null) {
+//            log.debug("Received registration request from mobile device");
+//        }
+//        deviceHandlerService = new PushDeviceHandlerService();
+//        return Response.ok().entity(deviceHandlerService.registerDevice(registrationRequest)).build();
+//    }
+//
+//    @Override
+//    public Response meBiometricdeviceDiscoveryDataGet() {
+//        if (log.isDebugEnabled()) {
+//            log.debug("Fetching data to generate QR code");
+//        }
+//        deviceHandlerService = new PushDeviceHandlerService();
+//        return Response.ok().entity(deviceHandlerService.getDiscoveryData()).build();
+//    }
+
     @Override
-    public Response meBiometricdeviceDeviceIdDelete(String deviceId) {
+    public Response mePushAuthDevicesDeviceIdDelete(String deviceId) {
         if (log.isDebugEnabled()) {
             log.debug(MessageFormat.format("Removing device : {0} ", deviceId));
         }
@@ -53,7 +115,7 @@ public class MeApiServiceImpl implements MeApiService {
     }
 
     @Override
-    public Response meBiometricdeviceDeviceIdGet(String deviceId) {
+    public Response mePushAuthDevicesDeviceIdGet(String deviceId) {
         if (log.isDebugEnabled()) {
             log.debug(MessageFormat.format("Fetching data of device : {0}", deviceId));
         }
@@ -62,7 +124,7 @@ public class MeApiServiceImpl implements MeApiService {
     }
 
     @Override
-    public Response meBiometricdeviceDeviceIdPatch(String deviceId, PatchDTO patch) {
+    public Response mePushAuthDevicesDeviceIdPatch(String deviceId, PatchDTO patch) {
         if (log.isDebugEnabled()) {
             log.debug(MessageFormat.format("The device name could not be modified of device : {0} ", deviceId));
         }
@@ -77,7 +139,12 @@ public class MeApiServiceImpl implements MeApiService {
     }
 
     @Override
-    public Response meBiometricdeviceDevicesGet() {
+    public Response mePushAuthDevicesDeviceIdRemovePost(String deviceId, InlineObject inlineObject) {
+        return null;
+    }
+
+    @Override
+    public Response mePushAuthDevicesGet() {
         if (log.isDebugEnabled()) {
             log.debug("Retrieving all devices of user ");
         }
@@ -86,7 +153,7 @@ public class MeApiServiceImpl implements MeApiService {
     }
 
     @Override
-    public Response meBiometricdevicePost(RegistrationRequestDTO registrationRequest) {
+    public Response mePushAuthDevicesPost(RegistrationRequestDTO registrationRequest) {
         if (log.isDebugEnabled() && registrationRequest != null) {
             log.debug("Received registration request from mobile device");
         }
@@ -95,12 +162,11 @@ public class MeApiServiceImpl implements MeApiService {
     }
 
     @Override
-    public Response meBiometricdeviceDiscoveryDataGet() {
+    public Response mePushAuthDiscoveryDataGet() {
         if (log.isDebugEnabled()) {
             log.debug("Fetching data to generate QR code");
         }
         deviceHandlerService = new PushDeviceHandlerService();
         return Response.ok().entity(deviceHandlerService.getDiscoveryData()).build();
     }
-
 }

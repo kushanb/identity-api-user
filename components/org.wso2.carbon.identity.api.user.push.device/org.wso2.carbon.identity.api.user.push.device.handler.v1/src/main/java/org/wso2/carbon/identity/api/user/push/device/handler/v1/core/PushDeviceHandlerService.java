@@ -56,7 +56,7 @@ public class PushDeviceHandlerService {
         Device device;
         try {
             deviceHandler = new DeviceHandlerImpl();
-            registrationRequest.setDeviceId(registrationRequestDTO.getId());
+            registrationRequest.setDeviceId(registrationRequestDTO.getDeviceId());
             registrationRequest.setDeviceModel(registrationRequestDTO.getModel());
             registrationRequest.setDeviceName(registrationRequestDTO.getName());
             registrationRequest.setPublicKey(registrationRequestDTO.getPublickey());
@@ -100,7 +100,7 @@ public class PushDeviceHandlerService {
         }
 
         DeviceDTO deviceDTO = new DeviceDTO();
-        deviceDTO.setId(device.getDeviceId());
+        deviceDTO.setDeviceId(device.getDeviceId());
         deviceDTO.setName(device.getDeviceName());
         return deviceDTO;
     }
@@ -160,7 +160,7 @@ public class PushDeviceHandlerService {
                     PushDeviceApiConstants.ErrorMessages.ERROR_CODE_IO_ERROR);
         }
         DeviceDTO deviceDTO = new DeviceDTO();
-        deviceDTO.setId(device.getDeviceId());
+        deviceDTO.setDeviceId(device.getDeviceId());
         deviceDTO.setName(device.getDeviceName());
         deviceDTO.setModel(device.getDeviceModel());
         deviceDTO.setPushId(device.getPushId());
@@ -199,7 +199,7 @@ public class PushDeviceHandlerService {
         if (devices != null) {
             for (Device device : devices) {
                 deviceDTO = new DeviceDTO();
-                deviceDTO.setId(device.getDeviceId());
+                deviceDTO.setDeviceId(device.getDeviceId());
                 deviceDTO.setName(device.getDeviceName());
                 deviceDTO.setModel(device.getDeviceModel());
                 deviceDTO.setRegistrationTime(device.getRegistrationTime());

@@ -30,30 +30,29 @@ import javax.xml.bind.annotation.*;
 
 public class DeviceDTO  {
   
-    private String id;
+    private String deviceId;
     private String name;
     private String model;
     private String pushId;
-    private String publicKey;
     private Object registrationTime;
     private Object lastUsedTime;
 
     /**
     **/
-    public DeviceDTO id(String id) {
+    public DeviceDTO deviceId(String deviceId) {
 
-        this.id = id;
+        this.deviceId = deviceId;
         return this;
     }
     
-    @ApiModelProperty(example = "768tyu78", value = "")
-    @JsonProperty("id")
+    @ApiModelProperty(example = "b03f90c9-6723-48f6-863b-a35f1ac77f57", value = "")
+    @JsonProperty("deviceId")
     @Valid
-    public String getId() {
-        return id;
+    public String getDeviceId() {
+        return deviceId;
     }
-    public void setId(String id) {
-        this.id = id;
+    public void setDeviceId(String deviceId) {
+        this.deviceId = deviceId;
     }
 
     /**
@@ -100,7 +99,7 @@ public class DeviceDTO  {
         return this;
     }
     
-    @ApiModelProperty(example = "816768tyu78", value = "")
+    @ApiModelProperty(example = "fuRr8s_eQrmB88nu5Tz8oa:APA91bFMqYbuzDYyOGK28VoiLHWYXZYzGNVg3tfxfNwKPH-jDIFpNDdUHkmq5wqBUySYZnuHfpycyQvUrPhwV3UZ1YzjUNLvb9gzFZudfJd1N3fWuU0w2nq_hVJc0UPRabvNPuJy8wMB", value = "")
     @JsonProperty("pushId")
     @Valid
     public String getPushId() {
@@ -108,24 +107,6 @@ public class DeviceDTO  {
     }
     public void setPushId(String pushId) {
         this.pushId = pushId;
-    }
-
-    /**
-    **/
-    public DeviceDTO publicKey(String publicKey) {
-
-        this.publicKey = publicKey;
-        return this;
-    }
-    
-    @ApiModelProperty(example = "81fsgfdfdsfds6768tyu78", value = "")
-    @JsonProperty("publicKey")
-    @Valid
-    public String getPublicKey() {
-        return publicKey;
-    }
-    public void setPublicKey(String publicKey) {
-        this.publicKey = publicKey;
     }
 
     /**
@@ -176,18 +157,17 @@ public class DeviceDTO  {
             return false;
         }
         DeviceDTO deviceDTO = (DeviceDTO) o;
-        return Objects.equals(this.id, deviceDTO.id) &&
+        return Objects.equals(this.deviceId, deviceDTO.deviceId) &&
             Objects.equals(this.name, deviceDTO.name) &&
             Objects.equals(this.model, deviceDTO.model) &&
             Objects.equals(this.pushId, deviceDTO.pushId) &&
-            Objects.equals(this.publicKey, deviceDTO.publicKey) &&
             Objects.equals(this.registrationTime, deviceDTO.registrationTime) &&
             Objects.equals(this.lastUsedTime, deviceDTO.lastUsedTime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, model, pushId, publicKey, registrationTime, lastUsedTime);
+        return Objects.hash(deviceId, name, model, pushId, registrationTime, lastUsedTime);
     }
 
     @Override
@@ -196,11 +176,10 @@ public class DeviceDTO  {
         StringBuilder sb = new StringBuilder();
         sb.append("class DeviceDTO {\n");
         
-        sb.append("    id: ").append(toIndentedString(id)).append("\n");
+        sb.append("    deviceId: ").append(toIndentedString(deviceId)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    model: ").append(toIndentedString(model)).append("\n");
         sb.append("    pushId: ").append(toIndentedString(pushId)).append("\n");
-        sb.append("    publicKey: ").append(toIndentedString(publicKey)).append("\n");
         sb.append("    registrationTime: ").append(toIndentedString(registrationTime)).append("\n");
         sb.append("    lastUsedTime: ").append(toIndentedString(lastUsedTime)).append("\n");
         sb.append("}");

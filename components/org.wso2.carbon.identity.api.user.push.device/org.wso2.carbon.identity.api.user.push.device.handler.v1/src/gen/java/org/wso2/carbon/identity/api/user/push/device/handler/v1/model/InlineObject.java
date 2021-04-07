@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.util.UUID;
 import javax.validation.constraints.*;
 
 
@@ -29,47 +28,28 @@ import java.util.Objects;
 import javax.validation.Valid;
 import javax.xml.bind.annotation.*;
 
-public class InlineResponse201  {
+public class InlineObject  {
   
-    private UUID id;
-    private String status;
+    private String token;
 
     /**
-    * ID of the added device
     **/
-    public InlineResponse201 id(UUID id) {
+    public InlineObject token(String token) {
 
-        this.id = id;
+        this.token = token;
         return this;
     }
     
-    @ApiModelProperty(example = "b03f90c9-6723-48f6-863b-a35f1ac77f57", value = "ID of the added device")
-    @JsonProperty("id")
+    @ApiModelProperty(example = "eyJhbGciOiJSUzI1NiJ9.eyJqdGkiOiI5ZjA3ZTAwOS1lM2MxLTQzMTQtYjg1Yy04NzY4MDc0YzM1NWEiLCJzdWIiOiJhbGFuQGNhcmJvbi5zdXBlciIsImlzcyI6IndzbzJ2ZXJpZnkiLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo5NDQzL3QvY2FyYm9uLnN1cGVyLyIsIm5iZiI6MTYxNDY2OTI0MywiZXhwIjoxNjE0NjcyODQzLCJpYXQiOjE2MTQ2NjkyNDMsImNoZyI6ImUwOTg4MTQ4LWIzMzctNGU0MS05NWQ3LWY5YTFmNDNkMDYyMyJ9.i6mh4SSJTfSP2IEyAQR5uZd1y0hHc4is4P66FRiYis5Yewl6k0DRoVXSZWWvGikX4rpqbZj868uBDmqm1CAENB3xF7sx3jdNSrXrVdUW6HsR2uu5Q5eO6OCQg8iZB2B1ylu4R5drTjtTDaSOoQfsNbVjnzI095bfLpAsszGPEPM", required = true, value = "")
+    @JsonProperty("token")
     @Valid
-    public UUID getId() {
-        return id;
-    }
-    public void setId(UUID id) {
-        this.id = id;
-    }
+    @NotNull(message = "Property token cannot be null.")
 
-    /**
-    * Status of the device registration process
-    **/
-    public InlineResponse201 status(String status) {
-
-        this.status = status;
-        return this;
+    public String getToken() {
+        return token;
     }
-    
-    @ApiModelProperty(example = "Success", value = "Status of the device registration process")
-    @JsonProperty("status")
-    @Valid
-    public String getStatus() {
-        return status;
-    }
-    public void setStatus(String status) {
-        this.status = status;
+    public void setToken(String token) {
+        this.token = token;
     }
 
 
@@ -83,24 +63,22 @@ public class InlineResponse201  {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        InlineResponse201 inlineResponse201 = (InlineResponse201) o;
-        return Objects.equals(this.id, inlineResponse201.id) &&
-            Objects.equals(this.status, inlineResponse201.status);
+        InlineObject inlineObject = (InlineObject) o;
+        return Objects.equals(this.token, inlineObject.token);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, status);
+        return Objects.hash(token);
     }
 
     @Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder();
-        sb.append("class InlineResponse201 {\n");
+        sb.append("class InlineObject {\n");
         
-        sb.append("    id: ").append(toIndentedString(id)).append("\n");
-        sb.append("    status: ").append(toIndentedString(status)).append("\n");
+        sb.append("    token: ").append(toIndentedString(token)).append("\n");
         sb.append("}");
         return sb.toString();
     }

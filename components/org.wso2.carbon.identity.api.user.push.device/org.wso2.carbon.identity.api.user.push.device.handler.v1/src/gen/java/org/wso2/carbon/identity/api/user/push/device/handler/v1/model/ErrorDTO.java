@@ -45,7 +45,7 @@ public class ErrorDTO  {
         return this;
     }
     
-    @ApiModelProperty(example = "109", value = "")
+    @ApiModelProperty(example = "PDM-15001", value = "")
     @JsonProperty("code")
     @Valid
     public String getCode() {

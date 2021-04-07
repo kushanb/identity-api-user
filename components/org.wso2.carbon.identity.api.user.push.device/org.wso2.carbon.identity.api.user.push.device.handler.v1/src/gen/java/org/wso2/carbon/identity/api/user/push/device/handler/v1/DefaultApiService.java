@@ -29,9 +29,9 @@ import javax.ws.rs.core.Response;
 
 public interface DefaultApiService {
 
-      public Response userIdBiometricdeviceDeviceIdDelete(String userId, String deviceId);
+      public Response userIdPushAuthDevicesDeviceIdDelete(String userId, String deviceId);
 
-      public Response userIdBiometricdeviceDeviceIdGet(String userId, String deviceId);
+      public Response userIdPushAuthDevicesDeviceIdGet(String userId, String deviceId);
 
-      public Response userIdBiometricdeviceDevicesGet(String userId);
+      public Response userIdPushAuthDevicesGet(String userId);
 }
