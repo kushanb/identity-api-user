@@ -60,6 +60,12 @@ public class PushDeviceHandlerService {
 
     DeviceHandler deviceHandler;
 
+    /**
+     * Register a new device
+     *
+     * @param registrationRequestDTO Registration request
+     * @return Device object
+     */
     public DeviceDTO registerDevice(RegistrationRequestDTO registrationRequestDTO) {
 
         RegistrationRequest registrationRequest = new RegistrationRequest();
@@ -88,6 +94,11 @@ public class PushDeviceHandlerService {
         return deviceDTO;
     }
 
+    /**
+     * Remove a registered device via MyAccount
+     *
+     * @param deviceId Unique ID for the device to be removed
+     */
     public void unregisterDevice(String deviceId) {
 
         try {
@@ -103,6 +114,13 @@ public class PushDeviceHandlerService {
 
     }
 
+    /**
+     * Remove a registered device via mobile app
+     *
+     * @param deviceId Unique ID for the device
+     * @param token JWT containing device removal information
+     * @return Result of the request
+     */
     public StatusDTO unregisterDeviceMobile(String deviceId, String token) {
 
         PushJWTValidator validator = new PushJWTValidator();
@@ -132,6 +150,12 @@ public class PushDeviceHandlerService {
 
     }
 
+    /**
+     * Update attributes of a registered device
+     *
+     * @param deviceId Unique ID of the device
+     * @param updatedDevice Device object with the updated attributes
+     */
     public void editDeviceName(String deviceId, String updatedDevice) {
 
         try {
@@ -151,6 +175,12 @@ public class PushDeviceHandlerService {
         }
     }
 
+    /**
+     * Get a registered device
+     *
+     * @param deviceId Unique ID of the required device
+     * @return Device object
+     */
     public DeviceDTO getDevice(String deviceId) {
 
         deviceHandler = new DeviceHandlerImpl();
@@ -174,6 +204,11 @@ public class PushDeviceHandlerService {
         return deviceDTO;
     }
 
+    /**
+     * Get a list of all the devices for the authenticated in user
+     *
+     * @return List of registered devices of the user
+     */
     public ArrayList<DeviceDTO> listDevices() {
 
         deviceHandler = new DeviceHandlerImpl();
@@ -206,6 +241,11 @@ public class PushDeviceHandlerService {
         return deviceDTOArrayList;
     }
 
+    /**
+     * Get discovery data for registering a new device
+     *
+     * @return Discovery data
+     */
     public DiscoveryDataDTO getDiscoveryData() {
 
         deviceHandler = new DeviceHandlerImpl();
@@ -230,6 +270,11 @@ public class PushDeviceHandlerService {
         return discoveryDataDTO;
     }
 
+    /**
+     * Get the authenticated user
+     *
+     * @return Authenticated user
+     */
     private User getAuthenticatedUser() {
 
         User user = User.getUserFromUserName(CarbonContext.getThreadLocalCarbonContext().getUsername());
@@ -237,6 +282,13 @@ public class PushDeviceHandlerService {
         return user;
     }
 
+    /**
+     * Get the unique ID for a user by the username
+     *
+     * @param username Username of the user
+     * @return UserID for the user
+     * @throws UserStoreException
+     */
     private String getUserIdFromUsername(String username) throws UserStoreException {
 
         AbstractUserStoreManager userStoreManager = (AbstractUserStoreManager) CarbonContext.
