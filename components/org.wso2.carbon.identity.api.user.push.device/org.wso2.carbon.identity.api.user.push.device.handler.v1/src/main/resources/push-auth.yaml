@@ -17,8 +17,8 @@ servers:
   - url: https://{host}/t/{tenant_context}/api/users/v1
 
 security:
-  - OAuth2: []
-  - BasicAuth: []
+  - OAuth2: [ ]
+  - BasicAuth: [ ]
 paths:
   #Endpoint used to retrieve data to display in Qr Code
   /me/push-auth/discovery-data:
@@ -78,21 +78,11 @@ paths:
               $ref: '#/components/schemas/RegistrationRequestDTO'
       responses:
         201:
-          description: Created
+          description: Added new device
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: string
-                    format: uuid
-                    description: ID of the added device
-                    example: "b03f90c9-6723-48f6-863b-a35f1ac77f57"
-                  status:
-                    type: string
-                    description: Status of the device registration process
-                    example: "Success"
+                $ref: "#/components/schemas/StatusDTO"
         400:
           description: Bad Request
           content:
@@ -228,9 +218,9 @@ paths:
       tags:
         - me
 
-    patch:
+    put:
       description: |
-        This API is used to update the display name of a registered device<br/>
+        This API is used to update attributes of a registered device<br/>
         <b>Permission required:</b>
          * /permission/admin/login
       summary: |
@@ -245,7 +235,7 @@ paths:
       parameters:
         - name: deviceId
           in: path
-          description:  deviceId
+          description: deviceId
           required: true
           schema:
             type: string
@@ -331,6 +321,69 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
 
+      tags:
+        - me
+
+  /me/push-auth/devices/{deviceId}/remove:
+    post:
+      description: |
+        This API is used to remove a device from a mobile app<br/>
+        <b>Permission required:</b>
+         * /permission/admin/manage/identity/user/push_divice_mgt/delete
+      summary: |
+        Remove device
+      parameters:
+        - name: deviceId
+          in: path
+          description: Unique Id of the device
+          required: true
+          schema:
+            type: string
+            example: "b03f90c9-6723-48f6-863b-a35f1ac77f57"
+      requestBody:
+        description: 'Account details sent by mobile application'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RemoveRequestDTO"
+      responses:
+        200:
+          description: Device was removed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StatusDTO"
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        401:
+          description: Unautharized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        404:
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        500:
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
       tags:
         - me
 
@@ -507,76 +560,6 @@ paths:
       tags:
         - admin
 
-  # authentication api
-  /me/push-auth/devices/{deviceId}/remove:
-    post:
-      description: |
-        This API is used to remove a device from a mobile app<br/>
-        <b>Permission required:</b>
-         * /permission/admin/login
-      summary: |
-        Remove device
-      parameters:
-        - name: deviceId
-          in: path
-          description: Unique Id of the device
-          required: true
-          schema:
-            type: string
-            example: "b03f90c9-6723-48f6-863b-a35f1ac77f57"
-      requestBody:
-        description: 'Account details sent by mobile application'
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                token:
-                  type: string
-                  format: jwt
-                  example: "eyJhbGciOiJSUzI1NiJ9.eyJqdGkiOiI5ZjA3ZTAwOS1lM2MxLTQzMTQtYjg1Yy04NzY4MDc0YzM1NWEiLCJzdWIiOiJhbGFuQGNhcmJvbi5zdXBlciIsImlzcyI6IndzbzJ2ZXJpZnkiLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo5NDQzL3QvY2FyYm9uLnN1cGVyLyIsIm5iZiI6MTYxNDY2OTI0MywiZXhwIjoxNjE0NjcyODQzLCJpYXQiOjE2MTQ2NjkyNDMsImNoZyI6ImUwOTg4MTQ4LWIzMzctNGU0MS05NWQ3LWY5YTFmNDNkMDYyMyJ9.i6mh4SSJTfSP2IEyAQR5uZd1y0hHc4is4P66FRiYis5Yewl6k0DRoVXSZWWvGikX4rpqbZj868uBDmqm1CAENB3xF7sx3jdNSrXrVdUW6HsR2uu5Q5eO6OCQg8iZB2B1ylu4R5drTjtTDaSOoQfsNbVjnzI095bfLpAsszGPEPM"
-              required:
-                - token
-#            encoding:
-#              deviceId:
-#                type: string
-#                style: form
-      responses:
-        200:
-          description: Device removed
-        400:
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorDTO'
-        401:
-          description: Unautharized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorDTO'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorDTO'
-        404:
-          description: Not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorDTO'
-        500:
-          description: Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorDTO'
-      tags:
-        - me
 
 components:
   schemas:
@@ -670,7 +653,7 @@ components:
           example: "2019-11-26T05:16:19.932Z"
 
 
-    # The Response object recieved from the mobile device
+    # The Response object received from the mobile device
     RegistrationRequestDTO:
       type: object
       properties:
@@ -733,6 +716,35 @@ components:
           description: Path for the operation
           example: "/display-name"
 
+    StatusDTO:
+      description: Status for the completion of a request
+      required:
+        - deviceId
+        - status
+      properties:
+        deviceId:
+          type: string
+          description: Unique ID of the device
+          example: "b03f90c9-6723-48f6-863b-a35f1ac77f57"
+        operation:
+          type: string
+          description: Operation handled by the request
+          example: "REMOVE"
+        status:
+          type: string
+          description: Result status of the request
+          example: 'SUCCESSFUL'
+
+    RemoveRequestDTO:
+      description: Removing a device by deviceId
+      required:
+        - token
+      properties:
+        token:
+          type: string
+          description: JWT signed with unique private key containing remove device information
+          example: "eyJhbGciOiJSUzI1NiJ9.eyJqdGkiOiI5ZjA3ZTAwOS1lM2MxLTQzMTQtYjg1Yy04NzY4MDc0YzM1NWEiLCJzdWIiOiJhbGFuQGNhcmJvbi5zdXBlciIsImlzcyI6IndzbzJ2ZXJpZnkiLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo5NDQzL3QvY2FyYm9uLnN1cGVyLyIsIm5iZiI6MTYxNDY2OTI0MywiZXhwIjoxNjE0NjcyODQzLCJpYXQiOjE2MTQ2NjkyNDMsImNoZyI6ImUwOTg4MTQ4LWIzMzctNGU0MS05NWQ3LWY5YTFmNDNkMDYyMyJ9.i6mh4SSJTfSP2IEyAQR5uZd1y0hHc4is4P66FRiYis5Yewl6k0DRoVXSZWWvGikX4rpqbZj868uBDmqm1CAENB3xF7sx3jdNSrXrVdUW6HsR2uu5Q5eO6OCQg8iZB2B1ylu4R5drTjtTDaSOoQfsNbVjnzI095bfLpAsszGPEPM"
+
   securitySchemes:
     BasicAuth:
       scheme: basic
@@ -742,5 +754,5 @@ components:
       flows:
         authorizationCode:
           authorizationUrl: https://localhost:9443/oauth2/authorize
-          scopes: {}
+          scopes: { }
           tokenUrl: https://localhost:9443/oauth2/token

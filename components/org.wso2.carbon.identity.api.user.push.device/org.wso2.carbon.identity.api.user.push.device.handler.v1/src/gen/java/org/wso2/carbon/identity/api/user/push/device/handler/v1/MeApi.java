@@ -25,10 +25,10 @@ import java.util.List;
 import org.wso2.carbon.identity.api.user.push.device.handler.v1.model.DeviceDTO;
 import org.wso2.carbon.identity.api.user.push.device.handler.v1.model.DiscoveryDataDTO;
 import org.wso2.carbon.identity.api.user.push.device.handler.v1.model.ErrorDTO;
-import org.wso2.carbon.identity.api.user.push.device.handler.v1.model.InlineObject;
-import org.wso2.carbon.identity.api.user.push.device.handler.v1.model.InlineResponse201;
 import org.wso2.carbon.identity.api.user.push.device.handler.v1.model.PatchDTO;
 import org.wso2.carbon.identity.api.user.push.device.handler.v1.model.RegistrationRequestDTO;
+import org.wso2.carbon.identity.api.user.push.device.handler.v1.model.RemoveRequestDTO;
+import org.wso2.carbon.identity.api.user.push.device.handler.v1.model.StatusDTO;
 import org.wso2.carbon.identity.api.user.push.device.handler.v1.MeApiService;
 
 import javax.validation.Valid;
@@ -95,11 +95,11 @@ public class MeApi  {
     }
 
     @Valid
-    @PATCH
+    @PUT
     @Path("/push-auth/devices/{deviceId}")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Update display name of a registered device ", notes = "This API is used to update the display name of a registered device<br/> <b>Permission required:</b>  * /permission/admin/login ", response = Void.class, authorizations = {
+    @ApiOperation(value = "Update display name of a registered device ", notes = "This API is used to update attributes of a registered device<br/> <b>Permission required:</b>  * /permission/admin/login ", response = Void.class, authorizations = {
         @Authorization(value = "BasicAuth"),
         @Authorization(value = "OAuth2", scopes = {
             
@@ -113,9 +113,9 @@ public class MeApi  {
         @ApiResponse(code = 404, message = "Not found", response = ErrorDTO.class),
         @ApiResponse(code = 500, message = "Server Error", response = ErrorDTO.class)
     })
-    public Response mePushAuthDevicesDeviceIdPatch(@ApiParam(value = "deviceId",required=true) @PathParam("deviceId") String deviceId, @ApiParam(value = "Optional description in *Markdown*" ,required=true) @Valid PatchDTO patchDTO) {
+    public Response mePushAuthDevicesDeviceIdPut(@ApiParam(value = "deviceId",required=true) @PathParam("deviceId") String deviceId, @ApiParam(value = "Optional description in *Markdown*" ,required=true) @Valid PatchDTO patchDTO) {
 
-        return delegate.mePushAuthDevicesDeviceIdPatch(deviceId,  patchDTO );
+        return delegate.mePushAuthDevicesDeviceIdPut(deviceId,  patchDTO );
     }
 
     @Valid
@@ -123,23 +123,23 @@ public class MeApi  {
     @Path("/push-auth/devices/{deviceId}/remove")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Remove device ", notes = "This API is used to remove a device from a mobile app<br/> <b>Permission required:</b>  * /permission/admin/login ", response = Void.class, authorizations = {
+    @ApiOperation(value = "Remove device ", notes = "This API is used to remove a device from a mobile app<br/> <b>Permission required:</b>  * /permission/admin/manage/identity/user/push_divice_mgt/delete ", response = StatusDTO.class, authorizations = {
         @Authorization(value = "BasicAuth"),
         @Authorization(value = "OAuth2", scopes = {
             
         })
     }, tags={ "me", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Device removed", response = Void.class),
+        @ApiResponse(code = 200, message = "Device was removed", response = StatusDTO.class),
         @ApiResponse(code = 400, message = "Bad Request", response = ErrorDTO.class),
         @ApiResponse(code = 401, message = "Unautharized", response = ErrorDTO.class),
         @ApiResponse(code = 403, message = "Forbidden", response = ErrorDTO.class),
         @ApiResponse(code = 404, message = "Not found", response = ErrorDTO.class),
         @ApiResponse(code = 500, message = "Server Error", response = ErrorDTO.class)
     })
-    public Response mePushAuthDevicesDeviceIdRemovePost(@ApiParam(value = "Unique Id of the device",required=true) @PathParam("deviceId") String deviceId, @ApiParam(value = "" ,required=true) @Valid InlineObject inlineObject) {
+    public Response mePushAuthDevicesDeviceIdRemovePost(@ApiParam(value = "Unique Id of the device",required=true) @PathParam("deviceId") String deviceId, @ApiParam(value = "Account details sent by mobile application" ,required=true) @Valid RemoveRequestDTO removeRequestDTO) {
 
-        return delegate.mePushAuthDevicesDeviceIdRemovePost(deviceId,  inlineObject );
+        return delegate.mePushAuthDevicesDeviceIdRemovePost(deviceId,  removeRequestDTO );
     }
 
     @Valid
@@ -171,14 +171,14 @@ public class MeApi  {
     @Path("/push-auth/devices")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Register a device for push-based authentication ", notes = "This API is used to recieve device information from the mobile app and complete the add account flow.<br/> <b>Permission required:</b>  * /permission/admin/login ", response = InlineResponse201.class, authorizations = {
+    @ApiOperation(value = "Register a device for push-based authentication ", notes = "This API is used to recieve device information from the mobile app and complete the add account flow.<br/> <b>Permission required:</b>  * /permission/admin/login ", response = StatusDTO.class, authorizations = {
         @Authorization(value = "BasicAuth"),
         @Authorization(value = "OAuth2", scopes = {
             
         })
     }, tags={ "me", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 201, message = "Created", response = InlineResponse201.class),
+        @ApiResponse(code = 201, message = "Added new device", response = StatusDTO.class),
         @ApiResponse(code = 400, message = "Bad Request", response = ErrorDTO.class),
         @ApiResponse(code = 401, message = "Unauthorized", response = ErrorDTO.class),
         @ApiResponse(code = 403, message = "Forbidden", response = ErrorDTO.class),

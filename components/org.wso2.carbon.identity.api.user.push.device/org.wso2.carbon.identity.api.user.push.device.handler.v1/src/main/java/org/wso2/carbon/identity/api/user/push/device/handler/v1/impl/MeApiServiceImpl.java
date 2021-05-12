@@ -29,6 +29,7 @@ import org.wso2.carbon.identity.api.user.push.device.handler.v1.core.PushDeviceH
 import org.wso2.carbon.identity.api.user.push.device.handler.v1.model.InlineObject;
 import org.wso2.carbon.identity.api.user.push.device.handler.v1.model.PatchDTO;
 import org.wso2.carbon.identity.api.user.push.device.handler.v1.model.RegistrationRequestDTO;
+import org.wso2.carbon.identity.api.user.push.device.handler.v1.model.RemoveRequestDTO;
 
 import java.text.MessageFormat;
 import javax.ws.rs.core.Response;
@@ -124,7 +125,7 @@ public class MeApiServiceImpl implements MeApiService {
     }
 
     @Override
-    public Response mePushAuthDevicesDeviceIdPatch(String deviceId, PatchDTO patch) {
+    public Response mePushAuthDevicesDeviceIdPut(String deviceId, PatchDTO patch) {
         if (log.isDebugEnabled()) {
             log.debug(MessageFormat.format("The device name could not be modified of device : {0} ", deviceId));
         }
@@ -138,10 +139,31 @@ public class MeApiServiceImpl implements MeApiService {
         }
     }
 
+
+//    @Override
+//    public Response mePushAuthDevicesDeviceIdPatch(String deviceId, PatchDTO patch) {
+//        if (log.isDebugEnabled()) {
+//            log.debug(MessageFormat.format("The device name could not be modified of device : {0} ", deviceId));
+//        }
+//        if(patch.getPath().equals("/display-name")) {
+//            deviceHandlerService = new PushDeviceHandlerService();
+//            deviceHandlerService.editDeviceName(deviceId, patch.getValue());
+//
+//            return Response.ok().build();
+//        } else {
+//            return Response.status(400).build();
+//        }
+//    }
+
     @Override
-    public Response mePushAuthDevicesDeviceIdRemovePost(String deviceId, InlineObject inlineObject) {
-        return null;
+    public Response mePushAuthDevicesDeviceIdRemovePost(String deviceId, RemoveRequestDTO removeRequestDTO) {
+        String token = removeRequestDTO.getToken();
+
+        deviceHandlerService = new PushDeviceHandlerService();
+        return Response.ok().entity(deviceHandlerService.unregisterDeviceMobile(deviceId, token)).build();
     }
+
+
 
     @Override
     public Response mePushAuthDevicesGet() {
