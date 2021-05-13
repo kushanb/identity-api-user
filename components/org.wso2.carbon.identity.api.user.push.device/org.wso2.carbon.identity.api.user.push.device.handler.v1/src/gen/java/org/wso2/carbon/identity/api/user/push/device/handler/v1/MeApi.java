@@ -133,7 +133,7 @@ public class MeApi  {
         @ApiResponse(code = 200, message = "Device was removed", response = StatusDTO.class),
         @ApiResponse(code = 400, message = "Bad Request", response = ErrorDTO.class),
         @ApiResponse(code = 401, message = "Unauthorized", response = ErrorDTO.class),
-        @ApiResponse(code = 403, message = "Forbiddened", response = ErrorDTO.class),
+        @ApiResponse(code = 403, message = "Forbidden", response = ErrorDTO.class),
         @ApiResponse(code = 404, message = "Not found", response = ErrorDTO.class),
         @ApiResponse(code = 500, message = "Server Error", response = ErrorDTO.class)
     })
@@ -157,7 +157,7 @@ public class MeApi  {
         @ApiResponse(code = 200, message = "All availabe devices of the user.", response = Object.class, responseContainer = "List"),
         @ApiResponse(code = 400, message = "Bad Request", response = ErrorDTO.class),
         @ApiResponse(code = 401, message = "Unauthorized", response = ErrorDTO.class),
-        @ApiResponse(code = 403, message = "Forbiddened", response = ErrorDTO.class),
+        @ApiResponse(code = 403, message = "Forbidden", response = ErrorDTO.class),
         @ApiResponse(code = 404, message = "Not found", response = ErrorDTO.class),
         @ApiResponse(code = 500, message = "Server Error", response = ErrorDTO.class)
     })
@@ -181,7 +181,7 @@ public class MeApi  {
         @ApiResponse(code = 201, message = "Added new device", response = StatusDTO.class),
         @ApiResponse(code = 400, message = "Bad Request", response = ErrorDTO.class),
         @ApiResponse(code = 401, message = "Unauthorized", response = ErrorDTO.class),
-        @ApiResponse(code = 403, message = "Forbiddened", response = ErrorDTO.class),
+        @ApiResponse(code = 403, message = "Forbidden", response = ErrorDTO.class),
         @ApiResponse(code = 409, message = "Conflict", response = ErrorDTO.class),
         @ApiResponse(code = 500, message = "Server Error", response = ErrorDTO.class)
     })
@@ -204,7 +204,7 @@ public class MeApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Successful response", response = DiscoveryDataDTO.class),
         @ApiResponse(code = 401, message = "Unauthorized", response = ErrorDTO.class),
-        @ApiResponse(code = 403, message = "Forbiddened", response = ErrorDTO.class),
+        @ApiResponse(code = 403, message = "Forbidden", response = ErrorDTO.class),
         @ApiResponse(code = 500, message = "Internal Server Error", response = ErrorDTO.class)
     })
     public Response mePushAuthDiscoveryDataGet() {

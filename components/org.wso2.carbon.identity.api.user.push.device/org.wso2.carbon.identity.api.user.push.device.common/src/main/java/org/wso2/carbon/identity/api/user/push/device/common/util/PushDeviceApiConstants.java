@@ -23,6 +23,12 @@ package org.wso2.carbon.identity.api.user.push.device.common.util;
  * Constants used in Push Device handler Rest APIs.
  */
 public class PushDeviceApiConstants {
+
+    public static final String RESULT_SUCCESSFUL = "SUCCESSFUL";
+    public static final String RESULT_FAILED = "FAILED";
+    public static final String OPERATION_REGISTER = "REMOVE";
+    public static final String OPERATION_REMOVE = "REMOVE";
+
     /**
      * Error definitions.
      */
@@ -30,7 +36,7 @@ public class PushDeviceApiConstants {
         ERROR_CODE_INVALID_SIGNATURE(
                 "PDM-15001",
                 "The credibility of the request could not be verified",
-                "An error occurred when the digital signatre is not verified"),
+                "An error occurred when the digital signature is not verified"),
 
         ERROR_CODE_DEVICE_HANDLER_SQL_EXCEPTION(
                 "PDM-15002",
@@ -38,7 +44,7 @@ public class PushDeviceApiConstants {
                 "A SQL exception occurred while trying to perform database operation "),
         ERROR_CODE__JSON_PROCESSING_EXCEPTION(
                 "PDM-15003",
-                "Error occured while trying to convert an object to json format",
+                "Error occurred while trying to convert an object to json format",
                 "" + "A System error occurred while trying to convert an object to a JSON"),
         ERROR_CODE_INTERNAL_SERVER_ERROR(
                 "PDM-15004",
@@ -58,35 +64,38 @@ public class PushDeviceApiConstants {
         ERROR_CODE_LIST_DEVICE_SERVER_ERROR(
                 "PDM-15008",
                 "A system error occurred while trying to retrieve registered devices of a user"),
-        ERROR_COOE_UNREGISTER_DEVICE_SERVER_ERROR(
+        ERROR_CODE_UNREGISTER_DEVICE_SERVER_ERROR(
                 "PDM-15009",
-                "A System error occurred while trying to remove a specific device"),
-        ERROR_CODE_EDIT_DEVICE_NAME_SERVER_ERROR(
+                "A system error occurred while trying to remove a specific device"),
+        ERROR_CODE_EDIT_DEVICE_SERVER_ERROR(
                 "PDM-15010",
                 "The device could not be modified",
-                "A System error occurred while trying to modify the device name"),
+                "A System error occurred while trying to modify the device information"),
         ERROR_CODE_REGISTER_DEVICE_SERVER_ERROR(
                 "PDM-15011",
-                "A System error occurred while trying to register a new device"),
-        ERROR_CODE_IO_ERROR(
+                "A system error occurred while trying to register a new device"),
+        ERROR_CODE_REGISTRATION_DISCOVERY_DATA_ERROR(
                 "PDM-15012",
-                "A System error thrown while converting a JSON to an object"),
+                "A system error occurred while trying to get registration discovery data"),
+        ERROR_CODE_IO_ERROR(
+                "PDM-15013",
+                "A system error thrown while converting a JSON to an object"),
         ERROR_CODE_REGISTER_DEVICE_CLIENT_ERROR(
                 "PDM-10001",
-                "A System error occurred while trying to register a new device"),
+                "A system error occurred while trying to register a new device"),
         ERROR_CODE_GET_DEVICE_CLIENT_ERROR(
                 "PDM-10002",
                 "A system error occurred while trying to retrieve a device"),
         ERROR_CODE_LIST_DEVICE_CLIENT_ERROR(
                 "PDM-10003",
                 "A system error occurred while trying to retrieve registered devices of a user"),
-        ERROR_COOE_UNREGISTER_DEVICE_CLIENT_ERROR(
+        ERROR_CODE_UNREGISTER_DEVICE_CLIENT_ERROR(
                 "PDM-10004",
                 "A System error occurred while trying to remove a specific device"),
-        ERROR_CODE_EDIT_DEVICE_NAME_CLIENT_ERROR(
+        ERROR_CODE_EDIT_DEVICE_CLIENT_ERROR(
                 "PDM-10005",
                 "The device could not be modified",
-                "A System error occurred while trying to modify the device name");
+                "A System error occurred while trying to modify the device information");
 
         private final String code;
         private String message;

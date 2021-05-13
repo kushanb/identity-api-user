@@ -20,7 +20,6 @@
 
 package org.wso2.carbon.identity.api.user.push.device.handler.v1.impl;
 
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,19 +32,19 @@ import org.wso2.carbon.identity.api.user.push.device.handler.v1.model.RemoveRequ
 import java.text.MessageFormat;
 import javax.ws.rs.core.Response;
 
-
 /**
  * Implementation class of Biometric device Handler User APIs.
  */
 public class MeApiServiceImpl implements MeApiService {
+
     private static final Log log = LogFactory.getLog(MeApiServiceImpl.class);
 
     @Autowired
     private PushDeviceHandlerService deviceHandlerService;
 
-
     @Override
     public Response mePushAuthDevicesDeviceIdDelete(String deviceId) {
+
         if (log.isDebugEnabled()) {
             log.debug(MessageFormat.format("Removing device : {0} ", deviceId));
         }
@@ -56,6 +55,7 @@ public class MeApiServiceImpl implements MeApiService {
 
     @Override
     public Response mePushAuthDevicesDeviceIdGet(String deviceId) {
+
         if (log.isDebugEnabled()) {
             log.debug(MessageFormat.format("Fetching data of device : {0}", deviceId));
         }
@@ -65,6 +65,7 @@ public class MeApiServiceImpl implements MeApiService {
 
     @Override
     public Response mePushAuthDevicesDeviceIdPut(String deviceId, PatchDTO patch) {
+
         if (log.isDebugEnabled()) {
             log.debug(MessageFormat.format("The device name could not be modified of device : {0} ", deviceId));
         }
@@ -80,16 +81,16 @@ public class MeApiServiceImpl implements MeApiService {
 
     @Override
     public Response mePushAuthDevicesDeviceIdRemovePost(String deviceId, RemoveRequestDTO removeRequestDTO) {
+
         String token = removeRequestDTO.getToken();
 
         deviceHandlerService = new PushDeviceHandlerService();
         return Response.ok().entity(deviceHandlerService.unregisterDeviceMobile(deviceId, token)).build();
     }
 
-
-
     @Override
     public Response mePushAuthDevicesGet() {
+
         if (log.isDebugEnabled()) {
             log.debug("Retrieving all devices of user ");
         }
@@ -99,6 +100,7 @@ public class MeApiServiceImpl implements MeApiService {
 
     @Override
     public Response mePushAuthDevicesPost(RegistrationRequestDTO registrationRequest) {
+
         if (log.isDebugEnabled() && registrationRequest != null) {
             log.debug("Received registration request from mobile device");
         }
@@ -112,6 +114,7 @@ public class MeApiServiceImpl implements MeApiService {
 
     @Override
     public Response mePushAuthDiscoveryDataGet() {
+
         if (log.isDebugEnabled()) {
             log.debug("Fetching data to generate QR code");
         }

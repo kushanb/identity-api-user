@@ -81,7 +81,7 @@ public class ErrorDTO  {
         return this;
     }
     
-    @ApiModelProperty(example = "The error accoured due to ...", value = "")
+    @ApiModelProperty(example = "The error occurred due to ...", value = "")
     @JsonProperty("description")
     @Valid
     public String getDescription() {

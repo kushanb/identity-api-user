@@ -57,7 +57,7 @@ public class DefaultApi  {
         @ApiResponse(code = 404, message = "Not Found", response = ErrorDTO.class),
         @ApiResponse(code = 400, message = "Bad Request", response = ErrorDTO.class),
         @ApiResponse(code = 401, message = "Unauthorized", response = ErrorDTO.class),
-        @ApiResponse(code = 403, message = "Forbiddened", response = ErrorDTO.class),
+        @ApiResponse(code = 403, message = "Forbidden", response = ErrorDTO.class),
         @ApiResponse(code = 500, message = "Server Error", response = ErrorDTO.class)
     })
     public Response userIdPushAuthDevicesDeviceIdDelete(@ApiParam(value = "ID of user",required=true) @PathParam("user-id") String userId, @ApiParam(value = "Unique Id of device",required=true) @PathParam("deviceId") String deviceId) {
@@ -80,7 +80,7 @@ public class DefaultApi  {
         @ApiResponse(code = 200, message = "Specific device selected by the user.", response = DeviceDTO.class),
         @ApiResponse(code = 400, message = "Bad Request", response = ErrorDTO.class),
         @ApiResponse(code = 401, message = "Unauthorized", response = ErrorDTO.class),
-        @ApiResponse(code = 403, message = "Forbiddened", response = ErrorDTO.class),
+        @ApiResponse(code = 403, message = "Forbidden", response = ErrorDTO.class),
         @ApiResponse(code = 500, message = "Server Error", response = ErrorDTO.class)
     })
     public Response userIdPushAuthDevicesDeviceIdGet(@ApiParam(value = "ID of user",required=true) @PathParam("user-id") String userId, @ApiParam(value = "ID of device to return",required=true) @PathParam("deviceId") String deviceId) {
@@ -103,7 +103,7 @@ public class DefaultApi  {
         @ApiResponse(code = 200, message = "All registered devices of the user.", response = Object.class, responseContainer = "List"),
         @ApiResponse(code = 400, message = "Bad Request", response = ErrorDTO.class),
         @ApiResponse(code = 401, message = "Unauthorized", response = ErrorDTO.class),
-        @ApiResponse(code = 403, message = "Forbiddened", response = ErrorDTO.class),
+        @ApiResponse(code = 403, message = "Forbidden", response = ErrorDTO.class),
         @ApiResponse(code = 404, message = "Not found", response = ErrorDTO.class),
         @ApiResponse(code = 500, message = "Server Error", response = ErrorDTO.class)
     })

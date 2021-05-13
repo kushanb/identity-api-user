@@ -23,14 +23,14 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.*;
 
 /**
- * A JSONPatch as defined by RFC 6902.
+ * Update device information
  **/
 
 import io.swagger.annotations.*;
 import java.util.Objects;
 import javax.validation.Valid;
 import javax.xml.bind.annotation.*;
-@ApiModel(description = "A JSONPatch as defined by RFC 6902.")
+@ApiModel(description = "Update device information")
 public class PatchDTO  {
   
     private String operation;
