@@ -51,14 +51,14 @@ public class MeApi  {
     @Path("/push-auth/devices/{deviceId}")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Remove a registered device ", notes = "This API is used to remove a registered device at My Account<br/> <b>Permission required:</b>  * /permission/admin/login ", response = Void.class, authorizations = {
+    @ApiOperation(value = "Remove a registered device ", notes = "This API is used to remove a registered device at My Account<br/> <b>Permission required:</b>  * /permission/admin/login ", response = StatusDTO.class, authorizations = {
         @Authorization(value = "BasicAuth"),
         @Authorization(value = "OAuth2", scopes = {
             
         })
     }, tags={ "me", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = Void.class),
+        @ApiResponse(code = 200, message = "OK", response = StatusDTO.class),
         @ApiResponse(code = 204, message = "No content", response = Void.class),
         @ApiResponse(code = 404, message = "Not found", response = ErrorDTO.class),
         @ApiResponse(code = 400, message = "Bad Request", response = ErrorDTO.class),
@@ -132,8 +132,8 @@ public class MeApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Device was removed", response = StatusDTO.class),
         @ApiResponse(code = 400, message = "Bad Request", response = ErrorDTO.class),
-        @ApiResponse(code = 401, message = "Unautharized", response = ErrorDTO.class),
-        @ApiResponse(code = 403, message = "Forbidden", response = ErrorDTO.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = ErrorDTO.class),
+        @ApiResponse(code = 403, message = "Forbiddened", response = ErrorDTO.class),
         @ApiResponse(code = 404, message = "Not found", response = ErrorDTO.class),
         @ApiResponse(code = 500, message = "Server Error", response = ErrorDTO.class)
     })
@@ -156,8 +156,8 @@ public class MeApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "All availabe devices of the user.", response = Object.class, responseContainer = "List"),
         @ApiResponse(code = 400, message = "Bad Request", response = ErrorDTO.class),
-        @ApiResponse(code = 401, message = "Unautharized", response = ErrorDTO.class),
-        @ApiResponse(code = 403, message = "Forbidden", response = ErrorDTO.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = ErrorDTO.class),
+        @ApiResponse(code = 403, message = "Forbiddened", response = ErrorDTO.class),
         @ApiResponse(code = 404, message = "Not found", response = ErrorDTO.class),
         @ApiResponse(code = 500, message = "Server Error", response = ErrorDTO.class)
     })
@@ -181,7 +181,7 @@ public class MeApi  {
         @ApiResponse(code = 201, message = "Added new device", response = StatusDTO.class),
         @ApiResponse(code = 400, message = "Bad Request", response = ErrorDTO.class),
         @ApiResponse(code = 401, message = "Unauthorized", response = ErrorDTO.class),
-        @ApiResponse(code = 403, message = "Forbidden", response = ErrorDTO.class),
+        @ApiResponse(code = 403, message = "Forbiddened", response = ErrorDTO.class),
         @ApiResponse(code = 409, message = "Conflict", response = ErrorDTO.class),
         @ApiResponse(code = 500, message = "Server Error", response = ErrorDTO.class)
     })
@@ -203,8 +203,8 @@ public class MeApi  {
     }, tags={ "me" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Successful response", response = DiscoveryDataDTO.class),
-        @ApiResponse(code = 401, message = "Unautharized", response = ErrorDTO.class),
-        @ApiResponse(code = 403, message = "Forbidden", response = ErrorDTO.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = ErrorDTO.class),
+        @ApiResponse(code = 403, message = "Forbiddened", response = ErrorDTO.class),
         @ApiResponse(code = 500, message = "Internal Server Error", response = ErrorDTO.class)
     })
     public Response mePushAuthDiscoveryDataGet() {

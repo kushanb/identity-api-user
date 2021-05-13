@@ -37,13 +37,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/DiscoveryDataDTO'
         401:
-          description: Unautharized
+          description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
         403:
-          description: Forbidden
+          description: Forbiddened
           content:
             application/json:
               schema:
@@ -96,7 +96,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
         403:
-          description: Forbidden
+          description: Forbiddened
           content:
             application/json:
               schema:
@@ -138,13 +138,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
         401:
-          description: Unautharized
+          description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
         403:
-          description: Forbidden
+          description: Forbiddened
           content:
             application/json:
               schema:
@@ -183,6 +183,10 @@ paths:
       responses:
         200:
           description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusDTO'
         204:
           description: No content
         404:
@@ -361,13 +365,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
         401:
-          description: Unautharized
+          description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
         403:
-          description: Forbidden
+          description: Forbiddened
           content:
             application/json:
               schema:
@@ -427,13 +431,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
         401:
-          description: Unautharized
+          description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
         403:
-          description: Forbidden
+          description: Forbiddened
           content:
             application/json:
               schema:
@@ -483,13 +487,13 @@ paths:
                 $ref: '#/components/schemas/ErrorDTO'
 
         401:
-          description: Unautharized
+          description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
         403:
-          description: Forbidden
+          description: Forbiddened
           content:
             application/json:
               schema:
@@ -533,14 +537,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
         401:
-          description: Unautharized
+          description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
 
         403:
-          description: Forbidden
+          description: Forbiddened
           content:
             application/json:
               schema:
@@ -695,7 +699,7 @@ components:
           example: "There was an error"
         description:
           type: string
-          example: "The error accoured due to ..."
+          example: "The error occurred due to ..."
 
     PatchDTO:
       description: A JSONPatch as defined by RFC 6902.

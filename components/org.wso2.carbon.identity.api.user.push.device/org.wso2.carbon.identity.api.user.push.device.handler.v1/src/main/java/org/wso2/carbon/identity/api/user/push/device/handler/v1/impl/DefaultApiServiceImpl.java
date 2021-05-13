@@ -29,47 +29,18 @@ import org.wso2.carbon.identity.api.user.push.device.handler.v1.core.PushDeviceH
 import javax.ws.rs.core.Response;
 
 /**
- *Implementation class of Biometric device Handler Admin APIs .
+ * Implementation class of Biometric device Handler Admin APIs .
  */
 public class DefaultApiServiceImpl implements DefaultApiService {
+
     private static final Log log = LogFactory.getLog(DefaultApiServiceImpl.class);
 
     @Autowired
     private PushDeviceHandlerService deviceHandlerService;
 
-//    @Override
-//    public Response userIdBiometricdeviceDeviceIdDelete(String userId, String deviceId) {
-//
-//        if (log.isDebugEnabled()) {
-//            log.debug("Removing device : {0} " + deviceId + " of User : {0} ");
-//        }
-//        deviceHandlerService = new PushDeviceHandlerService();
-//        deviceHandlerService.unregisterDevice(deviceId);
-//        return Response.noContent().build();
-//    }
-//
-//
-//    @Override
-//    public Response userIdBiometricdeviceDeviceIdGet(String userId, String deviceId) {
-//        if (log.isDebugEnabled()) {
-//            log.debug("Fetching data of device : {0}" + deviceId + " of user :{0}" + userId);
-//        }
-//        deviceHandlerService = new PushDeviceHandlerService();
-//        return Response.ok().entity(deviceHandlerService.getDevice(deviceId)).build();
-//    }
-//
-//    @Override
-//    public Response userIdBiometricdeviceDevicesGet(String userId) {
-//
-//        if (log.isDebugEnabled()) {
-//            log.debug("Retrieving all devices of user ");
-//        }
-//        deviceHandlerService = new PushDeviceHandlerService();
-//        return Response.ok().entity(deviceHandlerService.listDevices()).build();
-//    }
-
     @Override
     public Response userIdPushAuthDevicesDeviceIdDelete(String userId, String deviceId) {
+
         if (log.isDebugEnabled()) {
             log.debug("Removing device : {0} " + deviceId + " of User : {0} ");
         }
@@ -80,6 +51,7 @@ public class DefaultApiServiceImpl implements DefaultApiService {
 
     @Override
     public Response userIdPushAuthDevicesDeviceIdGet(String userId, String deviceId) {
+
         if (log.isDebugEnabled()) {
             log.debug("Fetching data of device : {0}" + deviceId + " of user :{0}" + userId);
         }
@@ -89,6 +61,7 @@ public class DefaultApiServiceImpl implements DefaultApiService {
 
     @Override
     public Response userIdPushAuthDevicesGet(String userId) {
+
         if (log.isDebugEnabled()) {
             log.debug("Retrieving all devices of user ");
         }
