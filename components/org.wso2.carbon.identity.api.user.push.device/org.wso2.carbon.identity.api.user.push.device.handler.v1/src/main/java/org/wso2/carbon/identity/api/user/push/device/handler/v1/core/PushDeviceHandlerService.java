@@ -18,10 +18,6 @@
  */
 package org.wso2.carbon.identity.api.user.push.device.handler.v1.core;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.JSONObject;
 import org.wso2.carbon.context.CarbonContext;
 import org.wso2.carbon.identity.api.user.push.device.common.util.PushDeviceApiConstants;
@@ -43,13 +39,6 @@ import org.wso2.carbon.identity.application.common.model.User;
 import org.wso2.carbon.user.api.UserStoreException;
 import org.wso2.carbon.user.core.common.AbstractUserStoreManager;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.SignatureException;
-import java.security.spec.InvalidKeySpecException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,9 +53,9 @@ public class PushDeviceHandlerService {
      * Register a new device
      *
      * @param registrationRequestDTO Registration request
-     * @return Device object
+     * @return Status of registration request
      */
-    public DeviceDTO registerDevice(RegistrationRequestDTO registrationRequestDTO) {
+    public StatusDTO registerDevice(RegistrationRequestDTO registrationRequestDTO) {
 
         RegistrationRequest registrationRequest = new RegistrationRequest();
         Device device;
@@ -88,10 +77,11 @@ public class PushDeviceHandlerService {
                     PushDeviceApiConstants.ErrorMessages.ERROR_CODE_REGISTER_DEVICE_SERVER_ERROR);
         }
 
-        DeviceDTO deviceDTO = new DeviceDTO();
-        deviceDTO.setDeviceId(device.getDeviceId());
-        deviceDTO.setName(device.getDeviceName());
-        return deviceDTO;
+        StatusDTO statusDTO = new StatusDTO();
+        statusDTO.setDeviceId(device.getDeviceId());
+        statusDTO.setOperation("REGISTER");
+        statusDTO.setStatus("SUCCESSFUL");
+        return statusDTO;
     }
 
     /**
@@ -118,7 +108,7 @@ public class PushDeviceHandlerService {
      * Remove a registered device via mobile app
      *
      * @param deviceId Unique ID for the device
-     * @param token JWT containing device removal information
+     * @param token    JWT containing device removal information
      * @return Result of the request
      */
     public StatusDTO unregisterDeviceMobile(String deviceId, String token) {
@@ -153,7 +143,7 @@ public class PushDeviceHandlerService {
     /**
      * Update attributes of a registered device
      *
-     * @param deviceId Unique ID of the device
+     * @param deviceId      Unique ID of the device
      * @param updatedDevice Device object with the updated attributes
      */
     public void editDeviceName(String deviceId, String updatedDevice) {
