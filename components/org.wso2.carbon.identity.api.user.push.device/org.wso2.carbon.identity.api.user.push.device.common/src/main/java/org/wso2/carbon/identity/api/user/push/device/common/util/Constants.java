@@ -21,10 +21,13 @@ package org.wso2.carbon.identity.api.user.push.device.common.util;
  */
 public class Constants {
 
-      public enum ErrorMessages {
+    /**
+     * Error codes for Push Device Handler.
+     */
+    public enum ErrorMessages {
         ERROR_CODE_INVALID_SIGNATURE(
                 "BDH-15001",
-                "The credibility of the request could not be verified" ,
+                "The credibility of the request could not be verified",
                 "An error occurred when the digital signatre is not verified"),
 
         ERROR_CODE_DEVICE_HANDLER_SQL_EXCEPTION(
@@ -81,10 +84,10 @@ public class Constants {
                 "A System error occurred while trying to modify the device name");
 
         private final String code;
-        private  String message;
+        private String message;
         private final String description;
 
-          ErrorMessages(String code, String message, String description) {
+        ErrorMessages(String code, String message, String description) {
 
             this.code = code;
             this.message = message;
@@ -92,28 +95,34 @@ public class Constants {
         }
 
         ErrorMessages(String code, String description) {
-          this.code = code;
-          this.description = description;
+
+            this.code = code;
+            this.description = description;
         }
 
-        public void setMessage(String message) {
-          this.message = message;
-        }
+//        public void setMessage(String message) {
+//
+//            this.message = message;
+//        }
 
         public String getCode() {
+
             return code;
         }
 
         public String getMessage() {
+
             return message;
         }
 
         public String getDescription() {
+
             return description;
         }
 
         @Override
         public String toString() {
+
             return getCode() + " | " + getMessage() + " | " + getDescription();
         }
 

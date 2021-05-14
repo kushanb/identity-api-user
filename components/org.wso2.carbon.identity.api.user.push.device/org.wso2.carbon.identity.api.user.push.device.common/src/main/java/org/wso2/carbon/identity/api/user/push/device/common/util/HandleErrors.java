@@ -34,8 +34,8 @@ import javax.ws.rs.core.Response;
 /**
  * The class which handles API errors.
  */
-public class HandleException {
-    private static final Log log = LogFactory.getLog(HandleException.class);
+public class HandleErrors {
+    private static final Log log = LogFactory.getLog(HandleErrors.class);
 
     public static APIError handleException(Exception e, Constants.ErrorMessages errorEnum,
                                        String... data) {
@@ -64,14 +64,8 @@ public class HandleException {
         } else if (e instanceof SQLException) {
             return new APIError(Response.Status.INTERNAL_SERVER_ERROR, errorResponse);
         } else if (e instanceof PushDeviceHandlerClientException) {
-            if (e.getMessage() == null) {
-                errorEnum.setMessage(e.getMessage());
-            }
             return new APIError(Response.Status.INTERNAL_SERVER_ERROR, errorResponse);
         } else if (e instanceof PushDeviceHandlerServerException) {
-            if (e.getMessage() == null) {
-                errorEnum.setMessage(e.getMessage());
-            }
             return new APIError(Response.Status.INTERNAL_SERVER_ERROR, errorResponse);
         }  else {
             return new APIError(Response.Status.BAD_REQUEST, errorResponse);
